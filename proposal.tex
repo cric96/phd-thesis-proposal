@@ -2,7 +2,7 @@
 \usepackage{mgates-letter}
 \definecolor{dark_blue} {rgb}{0., 0., 0.65}
 \usepackage{makecell}
-
+\usepackage{listings}
 \usepackage{textcomp}
 \usepackage{mathrsfs}  % mathscr font
 \usepackage{boxedminipage}
@@ -57,12 +57,14 @@ Prof. Matteo Ferrara}
 	\rule[0.5cm]{\textwidth}{0.1mm}
 }
 
+\newcommand{\scafiweb}{{\sc{}ScaFi-Web}}
+\newcommand{\scafi}{{\sc{}ScaFi}}
 \newcommand{\rev}[1]{{
 	%\color{red}
 	#1
 	}}
 \abstract{
-This thesis aims to define a path towards the engineering of Cypher-Physical Swarms (CPSWs) - where swarms are seen in a modern key, including swarm robotics, large-scale IoT scenarios, and crowd engineering (tracking and control). 
+This document expands my PhD project proposal entitled Engineering Cyber-Physical Swarms with Aggregate Computing. In particular, this thesis aims to define a path towards the engineering of Cypher-Physical Swarms (CPSWs) - where swarms are seen in a modern key, including swarm robotics, large-scale IoT scenarios, and crowd engineering (tracking and control). 
 %
 CPSWs are backed by emerging trends of autonomic, pervasive, ubiquitous computing that foster a vision of distributed systems composed of a considerable number of simple entities that collectively perform complex tasks.
 %
@@ -76,11 +78,12 @@ due to the distributed control, high-rate failure, openness, and local-to-global
 %
 Therefore, my thesis is focused on finding a systematic and reproducible way to design CPSWs. 
 In particular, we plan to leverage Aggregate Computing -- a novel top-down global-to-local programming model.
-The latter is used to \emph{program} self-stabilization behaviours through a functional and composable manipulation of \emph{computational fields}.
+%The latter is used to \emph{program} self-stabilization behaviours through a functional and %composable manipulation of \emph{computational fields}.
 %
-As a final result of my PhD, we intend to analyse the application of Aggregate Computing in CPSWs. This will touch several aspects like distributed intelligence, flexible and opportunistic middlewares, building blocks and ad-hoc DSL.
+As a final result of my PhD, we intend to analyse the application of Aggregate Computing in CPSWs. This will touch on several aspects like distributed intelligence, flexible and opportunistic middlewares, building blocks and ad-hoc DSL.
 } %% TODO add discussion on middlewares?? 
 
+\newpage
 \tableofcontents
 \section{Introduction}
 The recent evolution of IT technologies led to a vision in which computation is \textit{everywhere}.
@@ -90,7 +93,7 @@ These consider systems (typically cypher physical) where a large number (thousan
 Hence we want to promote cypher-physical systems with the properties observed in swarms. Therefore we lead to define Cypher-Physical-Swarm (CPWS):
 a collection of (simple) computational entities linked with the physical world via perception and actuation that reach collective goals through self-organising behaviours. Swarm robotics, ``swarms” of people (crowds) or, in general, ``swarms” of IoT devices are clearly defined instances of CPSW.
 
-Traditional design methodologies are inadequate for CPSW engineering, due to local-to-global mapping problems, distributed control, complex IT insfrastrcture and scalability concerns.
+Traditional design methodologies are inadequate for CPSW engineering, due to local-to-global mapping problems, distributed control, complex IT infrastructures and scalability concerns.
 Following this line, the goal of my research PhD thesis is to find a systematic methodology (models, techniques and algorithms)
 to synthesise and deploy self-organising behaviours of predictable outcomes for CPSW.
 
@@ -103,24 +106,139 @@ organising collective behaviour through the manipulation of a distributed data s
 Even if Aggregate Computing is applied already in different scenarios like crowds of people, smart cities, and large-scale IoT, it currently lacks software architecture (middleware), systematic program definition, abstraction layers (DSL) and foundational aspects. Consequently, my thesis aims to investigate and analyse critically Aggregate
 Computing techniques in the field of CPSWs. This investigation will address multiple directions
 like distributed intelligence, flexible middlewares, and ad-hoc building blocks, possibly leading to
-contributions both at a foundational and “architectural” level. In this process, Machine Learning techniques could be used in support of Aggregate Computing to enhance adaptivity
+contributions both at a foundational (i.e. building blocks, aggregate computing language,  DSL) and “architectural” level (middleware, message passing architecture, ...). In this process, Machine Learning techniques could be used in support of Aggregate Computing to enhance adaptivity
 
 The proposal is then structured as follow. In \Cref{background} I discuss the current state-of-the-art methodologies and related works in the field CPSWs behaviour definition.
 In \Cref{contribution} I devise my thesis contribution in the path of engineering predictable outcome in CPSWs. Furthermore, I show my preliminary works done in my first PhD year and the future works that I plan to do. 
 
 
 \section{Background} \label{background}
-\subsection{Swarm intellingence}
+
 \subsection{Multi-Agent systems}
 \subsection{Aggregate Computing}
+
+Aggregate computing is an approach to specify or \emph{self-organising} behaviour of a MAS by a global perspective.
+%
+The aggregate program (i.e. a program writen with aggregate computing) provides a way to map the local observations of an individual agent (i.e., sensing information, current agent state, and inbound messages from neighbours) to (eventually) globally-coherent local actions
+ (i.e., actuation instructions, and outbound messages).
+%
+
+Historically, aggregate programming originated from works drawing inspiration from nature: whereas the biological inspiration led to swarm intelligent MASs, where agent indirectly interact by pheromones \cite{DBLP:conf/atal/ParunakBS02}, the physical inspiration led to the idea of agents acting in environments empowered with potential fields \cite{DBLP:books/daglib/0015276}.
+%
+Recently, aggregate programming has been formally backed by \emph{field calculi}~\cite{viroli2019jlamp-si-coord}, which provide a compositional approach
+ to global behaviour specification
+ based on functions from fields to fields.
+%
+A \emph{(computational) field} is a map associating a value to any device of a given domain.
+%
+So, for instance, controlling the movement of a swarm of drones can be expressed through a field of velocity vectors, which maps any drone of the swarm to a corresponding velocity (speed and direction); the set of low-energy devices can be denoted through a Boolean field holding \texttt{true} for devices whose local energy level (as perceived by local sensors, and collectively also denoted as a floating-point field) is under a certain threshold (also a floating-point field).
+%
+These fields, then, are generally manipulated through three kinds of constructs:
+\begin{enumerate}
+\item \emph{Stateful evolution}: \lstinline|rep(init)(f)|---expressing how a field, starting as \lstinline|init|, should evolve round-by-round through unary function \lstinline|f|.
+\item \emph{Neighbour interaction}: \lstinline|nbr(e)|---used to exchange with neighbours the value obtained by evaluating field expression \lstinline|e|; this locally yields a \emph{neighbouring field}, i.e., a field that maps any neighbour to the corresponding evaluation of \lstinline|e|.
+\item \emph{Domain partitioning}: \lstinline|branch(c){ifTrue}{ifFalse}|---used to partition the domain of devices into two parts: the devices for which field \lstinline|c| is locally \lstinline|true|, which evaluate expression \lstinline|ifTrue|, and those for which \lstinline|c| yields \lstinline|false|, which evaluate \lstinline|ifFalse|. 
+\end{enumerate}
+%
+The idea of aggregate programming is to 
+ write programs talking about global behaviour (fields)
+ and let these drive the local activity of every device in the system.
+%
+Aggregate programming is embodied by concrete aggregate programming languages~\cite{viroli2019jlamp-si-coord},
+ such as ScaFi~\cite{DBLP:conf/isola/CasadeiVAD20,DBLP:journals/eaai/CasadeiVAPD21},
+ a Domain-Specific Language (DSL) embedded in Scala
+ as well as a toolchain for aggregate system development and simulation~\cite{Casadei2016mass}.
+%
+
+As target tooljit, we probably adopt ScaFi in this my thesis work mostly for practical reasons: with respect to other aggregate programming languages such as Proto and Protelis, surveyed in \cite{viroli2019jlamp-si-coord},
+ScaFi is a \emph{strongly typed}, \emph{internal} DSL; therefore, it enables straightforward reuse of powerful features from the Scala host language (including its type system, type inference, programming abstractions, libraries).
+
+Additionally, ScaFi also represents an agile framework for testing experimental language features (cf. \emph{aggregate processes}~\cite{DBLP:journals/eaai/CasadeiVAPD21}.
+%
+Hence, among the existing languages for aggregate programming, we believe ScaFi is the one better fitting rich scenarios like what we expected for CPSWs.
+
+A full account of research about aggregate programming, field calculi, and ScaFi is beyond the scope of this proposal; more details can be found in~\cite{viroli2019jlamp-si-coord,DBLP:journals/eaai/CasadeiVAPD21}.
+
 \section{Contribution} \label{contribution}
 \subsection{Thesis proposal}
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{img/to-do-for-thesis.pdf}
+	\caption{Devise the current status of aggregate computing toolkit in literature. Dotted blocks mean a lack of that concept. Green block are the one that can be consider stable and reusable in CPSWs engineering. Red Block are the one that currently exists but need to be expanded in order to support CPSWs.}
+	\label{fig:current-state}
+\end{figure}
+My PhD thesis will be focused on the engineering process of CPSWs leveraging Aggregate Computing abstractions. The choice of Aggregate Computing as a conceptual model for describing CPSWs behaviours is well fitted since it:
+\begin{itemize}
+	\item Allows to define collective behaviour scale-independent:
+	\item Enhances the possibility to \textit{program} self-organisation:
+	\item It is applicable to different deployment kinds leveraging modern complex IT infrastructures
+\end{itemize}
+
+This choice impact strongly on the design process of Collective application. Some of the concerns are already tackled in related words but others are currently quite unexplored and for us are essential in the context of CPWS, and this is where my thesis work will be focused on.
+In particular, the main concerns where my work is placed are:
+\begin{itemize}
+	\item Development of \textit{flexible} middleware:
+	\item Building block definition from CPSWs:
+	\item Definition of DSL for swarm-like behaviour:
+	\item Improvements of the entire Aggregate Computing stack with Machine Learning:
+\end{itemize}
+
 \subsection{Preliminary contributions}
-\subsubsection{ScaFi-Web -- A tools for a distributed monitoring}
+In my first year of PhD, my activities have been centred on
+the integration of Aggregate Computing with Machine Learning capability to create even more
+intelligent collective behaviour. 
+
+My work climaxes with ~\cite{research} where I explain different suitable approaches to
+enhance Aggregate Computing with Machine learning. Finally, in the last period, I made concrete
+experiments with Reinforcement Learning -- in particular, Q-Learning \cite{} -- improving the current Aggregate Computing solutions.
+
+Concerning middleware aspects, my research activities aim at closing the gap between
+its abstract space and its application in concrete systems. In this direction, I made mainly contributions to ScaFi. In particular, we produce two articles concerning ScaFi-Web -- a web-based tool that could support monitoring aspects and ScaFi Loci -- a type-safe deployment methodology leveraging multi-tier programming.
+\subsubsection{ScaFi-Web -- A tool for a distributed monitoring}
+\scafiweb{}\footnote{\url{https://scafi.github.io/web}}
+ is an online playground for learning aggregate computing, experimenting with it, and monitoring executions in a browser.
+% a  web-based platform supporting \scafi{} in-browser that
+It currently features:
+\begin{itemize}
+ \item an interactive editor for writing \scafi{} programs;
+ \item a guided tour of the most prominent features, kickstarting development;
+ \item an in-browser simulated network of devices hosting the execution;
+ \item visualisation, inspection, and interaction tools integrated with the simulated environment.
+\end{itemize}
+
+Furthermore, it also provides a stepping stone towards a monitoring and control system for aggregate computing deployments.
+
+Indeed, In the context of field-based coordination, automated runtime verification approaches have been recently investigated, whereby spatial or temporal logics are mapped to field calculus programs to directly encode the behaviour of decentralised monitoring.
+
+The \scafiweb{}'s frontend has been designed to be adaptable to different backends; indeed, the UI is completely separated from the underlying aggregate execution system. 
+
 \subsubsection{ScaFi Loci -- Towards a type-safe deployment of Pulverised Architecture}
-\subsubsection{ScaFi-Web -- A tools for a distributed monitoring}
+Aggregate computing defines a conceptual model by which is possible to define collective computation. Practically, each node needs to have a notion of the neighbourhood (i.e what nodes are near to me) following a certain metric. \textit{How} this neighbourhood is built, is transparent for the computational model. Therefore it is possible to deploy the same application in different IT networks.
+
+Pulverised architectures (i.e. pulverisation) go in this direction, identifying the main \textit{deployable} units that can be moved in different concrete nodes, the core idea is that the functional
+the behaviour of a distributed application is fundamentally orthogonal to the actual deployment of the services that compose it.
+
+However, pulverisation does not specify how a pulverised architecture should
+be described and verified so that it can be operated correctly
+at runtime.
+
+So, in ScaFi Loci we define an architecture for multitiered deployment strategies in pulverised systems, along with an implementation using ScaFi and ScalaLoci.
+
+The latter enables a \textit{typesafe} multitier programming approach -- by wich distributed architecture is defined
+in a single compilation unit with a single language.
+
+This work could be seen a piece of the flexible middleware that we intend to build, focused only on the deployment aspects.
+
 \subsection{Future works}
 \subsubsection{Swarm API}
+\subsubsection{Improve to speed up convergence: Machine Learning applied to Building Blocks}
+Aggregate Computing based its logic in \textit{compositionality} inspired by functional programming. The idea is that complex behaviours can be defined only by means of composition of \emph{building blocks}. Furthermore, based on these programming bricks, relevant collective properties are proven such as self-stabilization and eventual consistency. 
+
+Currently, the key problem with those building blocks is that they aren't able to be used in any kind of network topology. Indeed we are dealing with high node dynamic, the overall computation field became quite a noise and unstable -- leading to ever reaching our intended result.
+
+Traditionally these problems are tackled with heuristic/algorithmically to solve various problems (stability of results, convergence speed up, ...). But this led to complex fine-tuning and algorithm choice for each new environment.
+
+Our idea hypotesis in (Research Direction for Aggregate Computing with Machine Learning) consist in applied Machine Learning algorithms -- and in particular Reinforcement Leanring -- to improve building block by means of speed up the self-stabilisation process.
 \subsubsection{Middleware-level learning}
 \subsection{Evaluation}\label{evaluation}
 \nocite{*}
