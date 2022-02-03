@@ -88,27 +88,47 @@ As a final result of my PhD, we intend to analyse the application of Aggregate C
 \section{Introduction}
 The recent evolution of IT technologies led to a vision in which computation is \textit{everywhere}.
 Several modern paradigms advance that vision, like ubiquitous, pervasive, and automatic computing.
-These consider systems (typically cypher physical) where a large number (thousand - million) of simple interacting devices collectively perform complicated tasks in a decentralised manner, acting and sensing through a shared environment.  Thus, they can be conceived as \textit{complex} systems like the one observed in nature --  by means that we cannot understand the behaviour of the whole looking only at the parts. Speaking about natural systems, social animals, like a swarm of insects, exhibit fault-tolerant, effective, and efficient collective behaviours leveraging self-organisation.
+%
+These consider systems (typically cypher physical) where a large number (thousand - million) of simple interacting devices collectively perform complicated tasks in a decentralised manner, acting and sensing through a shared environment. 
+%
+Thus, they can be conceived as \textit{complex} systems like the one observed in nature --  by means that we cannot understand the behaviour of the whole looking only at the parts.
+%
+Speaking about natural systems, social animals, like a swarm of insects, exhibit fault-tolerant, effective, and efficient collective behaviours leveraging self-organisation.
 
-Hence we want to promote cypher-physical systems with the properties observed in swarms. Therefore we lead to define Cypher-Physical-Swarm (\cpws):
-a collection of (simple) computational entities linked with the physical world via perception and actuation that reach collective goals through self-organising behaviours. Swarm robotics, ``swarms” of people (crowds) or, in general, ``swarms” of IoT devices are clearly defined instances of \cpws.
+Hence we want to promote cypher-physical systems with the properties observed in swarms. 
+%
+Therefore we lead to define Cypher-Physical-Swarm (\cpws): a collection of (simple) computational entities linked with the physical world via perception and actuation that reach collective goals through self-organising behaviours.
+%
+Swarm robotics, ``swarms” of people (crowds) or, in general, ``swarms” of IoT devices are clearly defined instances of \cpws.
 
 Traditional design methodologies are inadequate for \cpws engineering, due to local-to-global mapping problems, distributed control, complex IT infrastructures and scalability concerns.
+%
 Following this line, the goal of my research PhD thesis is to find a systematic methodology (models, techniques and algorithms)
 to synthesise and deploy self-organising behaviours of predictable outcomes for \cpws.
 
 This is not the first effort in this direction. Indeed, traditionally, designers have been guided
-by natural phenomena observation that was then transposed into computer systems — a so-called
-bottom-up approach. However, this trend led to specific solutions that hardly scale up with application complexity.
-Novel techniques -- and the one that we follow in this work -- consist of a top-down global-to-local approach where designers define the system outcome directly at the collective level. Among the many (like Buzz, TOTA) in this thesis, we will take into consideration Aggregate Computing since it enables the definition of self-
-organising collective behaviour through the manipulation of a distributed data structure called computational field. In this way, the program specification is “collectively” declared, abstracting over underlying aspects – such as network topology or communication protocol – and making it applicable to any system size. 
+by natural phenomena observation that was then transposed into computer systems -- a so-called
+bottom-up approach. 
+%
+However, this trend led to specific solutions that hardly scale up with application complexity.
+Novel techniques -- and the one that we follow in this work -- consist of a top-down global-to-local approach where designers define the system outcome directly at the collective level. 
+%
+Among the many (like Buzz, TOTA) in this thesis, we will take into consideration Aggregate Computing since it enables the definition of self-organising collective behaviour through the manipulation of a distributed data structure called computational field.
+%
+In this way, the program specification is “collectively” declared, abstracting over underlying aspects – such as network topology or communication protocol – and making it applicable to any system size. 
 
-Even if Aggregate Computing is applied already in different scenarios like crowds of people, smart cities, and large-scale IoT, it currently lacks software architecture (middleware), systematic program definition, abstraction layers (DSL) and foundational aspects. Consequently, my thesis aims to investigate and analyse critically Aggregate
-Computing techniques in the field of \cpws. This investigation will address multiple directions
-like distributed intelligence, flexible middlewares, and ad-hoc building blocks, possibly leading to
-contributions both at a foundational (i.e. building blocks, aggregate computing language,  DSL) and “architectural” level (middleware, message passing architecture, ...). In this process, Machine Learning techniques could be used in support of Aggregate Computing to enhance adaptivity
+Even if Aggregate Computing is applied already in different scenarios like crowds of people, smart cities, and large-scale IoT, it currently lacks software architecture (middleware), systematic program definition, abstraction layers (DSL) and foundational aspects.
+%
+Consequently, my thesis aims to investigate and analyse critically Aggregate
+Computing techniques in the field of \cpws. 
+%
+This investigation will address multiple directions
+like distributed intelligence, flexible middlewares, and ad-hoc building blocks, possibly leading to contributions both at a foundational (i.e. building blocks, aggregate computing language,  DSL) and ``architectural" level (middleware, message passing architecture, ...).
+%
+In this process, Machine Learning techniques could be used in support of Aggregate Computing to enhance adaptivity
 
 The proposal is then structured as follow. In \Cref{background} I discuss the current state-of-the-art methodologies and related works in the field \cpws behaviour definition.
+%
 In \Cref{contribution} I devise my thesis contribution in the path of engineering predictable outcome in \cpws. Furthermore, I show my preliminary works done in my first PhD year and the future works that I plan to do. 
 
 
@@ -116,21 +136,15 @@ In \Cref{contribution} I devise my thesis contribution in the path of engineerin
 %%% Expand the discussion of cpws, specilizing it against other scenarion
 %% So the properties are: partial observability, no centralized entity, an overall behaviour similar to what is seen in swarm ==> all the thins linked with swarm like system.
 \subsection{Multi-Agent Systems}
-A CPSWs could be seen as multi-agent system and, often, a \emph{many}-agent system
- where a large number (hundreds or more)
- of autonomous entities are programmed to achieve 
- some collective behaviour through \emph{repeated} 
- sensing, computation, communication, and actuation steps.
+A CPSWs could be seen as multi-agent system and, often, a \emph{many}-agent system where a large number (hundreds or more) of autonomous entities are programmed to achieve some collective behaviour through \emph{repeated}  sensing, computation, communication, and actuation steps.
 
-Due to the high stochasticity of the environment,
-  it is almost impossible to know and
-  program the optimal behaviour for all agents in advance.
-  This uncertainty results in the need of creating intelligent agents
-  so that they can learn the optimal behaviour and adapt to environmental changes.
-\subsubsection{Middlewares}
+Due to the high stochasticity of the environment, it is almost impossible to know and program the optimal behaviour for all agents in advance.
+%  
+This uncertainty results in the need of creating intelligent agents so that they can learn the optimal behaviour and adapt to environmental changes.
 \subsubsection{Learning}
-n recent decades there has been an emerging trend in the use of RL 
+In recent decades there has been an emerging trend in the use of RL 
 in multi-agent settings -- called Multi-Agent Reinforcement Learning (MARL) -- as a powerful, robust and adaptive learning paradigm.
+%
 Progress has been considerable and a wide range of algorithms are now available.
 
 MARL is a conjunction of Game theory and RL, 
@@ -160,9 +174,9 @@ The main problem with most of the solutions available in the literature is that 
  In AC instead, we need to find a technique that does not depend on the system node count.
 \subsection{Aggregate Computing}
 
-Aggregate computing is an approach to specify or \emph{self-organising} behaviour of a MAS by a global perspective.
+Aggregate computing is an approach to specify or \emph{self-organising} behaviour of a MAS from a global perspective.
 %
-The aggregate program (i.e. a program writen with aggregate computing) provides a way to map the local observations of an individual agent (i.e., sensing information, current agent state, and inbound messages from neighbours) to (eventually) globally-coherent local actions
+The aggregate program (i.e. a program written with aggregate computing) provides a way to map the local observations of an individual agent (i.e., sensing information, current agent state, and inbound messages from neighbours) to (eventually) globally-coherent local actions
  (i.e., actuation instructions, and outbound messages).
 %
 
@@ -212,18 +226,18 @@ A full account of research about aggregate programming, field calculi, and ScaFi
 \end{figure}
 My PhD thesis will be focused on the engineering process of \cpws leveraging Aggregate Computing abstractions. The choice of Aggregate Computing as a conceptual model for describing \cpws behaviours is well fitted since it:
 \begin{itemize}
-	\item Allows to define collective behaviour failure robust and scale-independent: the aggregate program are expressed by means of manipulation of computational field, abstracting over nodes itself and treating the systems like a computational blob that evolves in time. In doing that, the logic is independent from the node population, so it handles nativly failure, openess and moreover the same probram can be applied to very dense IT network.
-	\item Enhances the possibility to \textit{program} self-organisation: Typically, self-organisation is something that was achieved by observing natural phenomena. Aggregate Computing wants to give a systematic way to let \textit{self-organising} behaviour programble. To do that, the programs are defined by means of composition of building block that expose self-organising pattern.
-	\item It is applicable to different deployment kinds leveraging modern complex IT infrastructures: Aggregate program does not depend on any particular IT network framework. Potentially, it could be applied in cloud like systems, P2P network and client and server architecture (the direction of pulverisation). This is particularly important for \cpws since the could leverage different kind networks.
+	\item Allows defining collective behaviour failure robust and scale-independent: the aggregate programs are expressed through manipulation of computational field, abstracting over nodes itself and treating the systems like a computational blob that evolves in time. In doing that, the logic is independent of the node population, so it handles natively failure, openness and the same program can be applied to very dense IT networks.
+	\item Enhances the possibility to \textit{program} self-organisation: Typically, self-organisation is something that was achieved by observing natural phenomena. Aggregate Computing wants to give a systematic way to let \textit{self-organising} behaviour programmable. To do that, the programs are defined using a composition of building blocks that expose self-organising patterns.
+	\item Is applicable to different deployment kinds leveraging modern complex IT infrastructures: Aggregate program does not depend on any particular IT network framework. Potentially, it could be applied in cloud-like systems, P2P networks and client and server architecture (the direction of pulverisation). This is particularly important for \cpws since they could leverage different kinds of networks.
 \end{itemize}
 
 This choice impact strongly on the design process of collective application. Some of the concerns are already tackled in related words but others are currently quite unexplored and for us are essential in the context of CPWS, and this is where my thesis work will be focused on.
 In particular, the main concerns where my work is placed are:
 \begin{itemize}
-	\item Development of \textit{flexible} middleware: In this year, the main effort of this line of the research concern \textit{foundational} aspects. However, currently little effert are done in make aggregate program applicable to various deployment kind. Furthermore, we would like to leverage current IT infrastructures opportunistically (like edge computing or osmotic computing). In this line, in my thesis I would place software artifact in order to \textit{support} such kind of middleware for \cpws.
-	\item Building block definition from \cpws:
-	\item Definition of API for swarm-like behaviour: Aggregate Computing is based on a layered approch. Typically, for each different scenario, developer should define a API to support a particular kind of application. So, in this thesis we will focus on defintion of common abstraction needed to program \cpws.
-	\item Improvements of the entire Aggregate Computing stack with Machine Learning: Aggregate computing stack concern different aspects, from API, to field-calculus to middleware. Machine Learning -- and in particular Reinforcement Learning -- in this context could be used as an intristic mechanism to improve adaptivity.
+	\item Development of \textit{flexible} middleware: In this year, the main effort of this line of the research concern \textit{foundational} aspects. However, currently, little effort is done to make aggregate programs applicable to various deployment kinds. Furthermore, we would like to leverage current IT infrastructures opportunistically (like edge computing or osmotic computing). In this line, in my thesis, I would produce software artefact in order to \textit{support} such kind of middleware for \cpws.
+	\item Building blocks definition from \cpws: During the study and the analysis of CPSWs, we would encounter the possibility of describing new building blocks. For instance, in swarms the concept of \emph{cluster} is central for several reasons: identifying a group of entities with common capabilities, we can use it to produce a mean view of a certain zone, and so on. Therefore, we probably need to enlarge the current building block set to new constructs, that possibly could be useful also to other scenarios (like smart cities, smart grid, ...).
+	\item Definition of API for swarm-like behaviour: Aggregate Computing is based on a layered approach. Typically, for each different scenario, developers should define an API to support a particular kind of application. So, in this thesis, we will focus on the definition of common abstraction needed to program \cpws.
+	\item Improvements of the entire Aggregate Computing stack with Machine Learning: Aggregate computing stack concern different aspects, from API to field-calculus to middleware. Machine Learning -- and in particular Reinforcement Learning -- in this context could be used as an intrinsic mechanism to improve adaptivity.
 \end{itemize}
 
 \subsection{Preliminary contributions}
@@ -266,24 +280,25 @@ be described and verified so that it can be operated correctly
 at runtime.
 Therefore, in \scafiweb Loci we define an architecture for multitiered deployment strategies in pulverised systems, along with an implementation using ScaFi and ScalaLoci.
 
-The latter enables a \textit{typesafe} multitier programming approach -- by wich distributed architecture is defined
+The latter enables a \textit{typesafe} multitier programming approach -- by which distributed architecture is defined
 in a single compilation unit with a single language.
 
-This work could be seen a piece of the flexible middleware that we intend to build, focused only on the deployment aspects.
+This work could be seen as a piece of the flexible middleware that we intend to build, focused only on the deployment aspects.
 
 \subsection{Future works}
 
 \subsubsection{Swarm API}
-The thesis will extend the current aggregate computing stack with high-level API about swarms behaviours (Swarm API) like flocking, foraging, blinking andspreading of information.  Consequently, self-adaptive properties have to beverified as done in other building blocks.  The swarm API will not only mimicsome nature-inspired behaviours, but it will give a general interface to solvecommon collective  problems. The  API  could  be  reused  under  the  generalcollective adaptive system (CAS) context.
+The thesis will extend the current aggregate computing stack with high-level API about swarms behaviours (Swarm API) like flocking, foraging, blinking and spreading of information.  Consequently, self-adaptive properties have to be verified as done in other building blocks.  The swarm API will not only mimic some nature-inspired behaviours, but it will give a general interface to solve common collective problems. The API could be reused under the general collective adaptive system (CAS) context.
 \subsubsection{Improve to speed up convergence: Machine Learning applied to Building Blocks}
-Aggregate Computing based its logic in \textit{compositionality} inspired by functional programming. The idea is that complex behaviours can be defined only by means of composition of \emph{building blocks}. Furthermore, based on these programming bricks, relevant collective properties are proven such as self-stabilization and eventual consistency. 
+Aggregate Computing based its logic in \textit{compositionality} inspired by functional programming. The idea is that complex behaviours can be defined only through the composition of \emph{building blocks}. Furthermore, based on these programming bricks, relevant collective properties are proven such as self-stabilization and eventual consistency. 
 
 Currently, the key problem with those building blocks is that they aren't able to be used in any kind of network topology. Indeed we are dealing with high node dynamic, the overall computation field became quite a noise and unstable -- leading to ever reaching our intended result.
 
 Traditionally these problems are tackled with heuristic/algorithmically to solve various problems (stability of results, convergence speed up, ...). But this led to complex fine-tuning and algorithm choice for each new environment.
 
-Our idea hypotesis in~\cite{research} consist in applied Machine Learning algorithms -- and in particular Reinforcement Learning -- to improve building block by means of speed up the self-stabilisation process.
+Our idea hypothesis in~\cite{research} consists of applied Machine Learning algorithms -- and in particular Reinforcement Learning -- to improve building blocks by means of speeding up the self-stabilisation process.
 \subsubsection{Middleware-level learning}
+%% Talk about the aspect of time fuild (distributed scheduler) and space fluid (discard message opportunistically).
 \subsection{Evaluation}\label{evaluation}
 The current development process
 
