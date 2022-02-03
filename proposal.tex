@@ -66,9 +66,9 @@ This thesis aims to define a path towards the engineering of Cypher-Physical Swa
 %
 CPSWs are backed by emerging trends of autonomic, pervasive, ubiquitous computing that foster a vision of distributed systems composed of a considerable number of simple entities that collectively perform complex tasks.
 %
-These systems are similar to natural social-animal groups, where plentiful animals (like ants, sheep, ...) achieve complex tasks (foragging, flocking, ...).
+These systems are similar to natural social-animal groups, where plentiful animals (like ants, sheep, ...) achieve complex tasks (foraging, flocking, ...).
 %
-Furthermore, these behaviour are typically achieved through self-organization, making the system robust to failures and highly scalable.
+Furthermore, these behaviour are typically achieved through self-organisation, making the system robust to failures and highly scalable.
 %
 Inspired by nature, we define the notion of ``Cypher-Physical Swarm'' -- the extension of `swarms' (of people, of computers, of things) in computer science.
 Engineering this kind of system with traditional approaches is inadequate, 
@@ -78,19 +78,42 @@ Therefore, my thesis is focused on finding a systematic and reproducible way to 
 In particular, we plan to leverage Aggregate Computing -- a novel top-down global-to-local programming model.
 The latter is used to \emph{program} self-stabilization behaviours through a functional and composable manipulation of \emph{computational fields}.
 %
-At the same time, we consider leveraging Machine Learning to improve \emph{adapativity} -- both at the middleware level and the Aggregate Computing specification language.
-%
-As a final result of my PhD, we intend to reach a seamless integration of Aggregate Computing and Machine Learning, making the collective behaviour specification smarter, more effective and faster
+As a final result of my PhD, we intend to analyse the application of Aggregate Computing in CPSWs. This will touch several aspects like distributed intelligence, flexible and opportunistic middlewares, building blocks and ad-hoc DSL.
 } %% TODO add discussion on middlewares?? 
 
 \tableofcontents
 \section{Introduction}
+The recent evolution of IT technologies led to a vision in which computation is \textit{everywhere}.
+Several modern paradigms advance that vision, like ubiquitous, pervasive, and automatic computing.
+These consider systems (typically cypher physical) where a large number (thousand - million) of simple interacting devices collectively perform complicated tasks in a decentralised manner, acting and sensing through a shared environment.  Thus, they can be conceived as \textit{complex} systems like the one observed in nature --  by means that we cannot understand the behaviour of the whole looking only at the parts. Speaking about natural systems, social animals, like a swarm of insects, exhibit fault-tolerant, effective, and efficient collective behaviours leveraging self-organisation.
 
-\section{Background}
+Hence we want to promote cypher-physical systems with the properties observed in swarms. Therefore we lead to define Cypher-Physical-Swarm (CPWS):
+a collection of (simple) computational entities linked with the physical world via perception and actuation that reach collective goals through self-organising behaviours. Swarm robotics, ``swarms” of people (crowds) or, in general, ``swarms” of IoT devices are clearly defined instances of CPSW.
+
+Traditional design methodologies are inadequate for CPSW engineering, due to local-to-global mapping problems, distributed control, complex IT insfrastrcture and scalability concerns.
+Following this line, the goal of my research PhD thesis is to find a systematic methodology (models, techniques and algorithms)
+to synthesise and deploy self-organising behaviours of predictable outcomes for CPSW.
+
+This is not the first effort in this direction. Indeed, traditionally, designers have been guided
+by natural phenomena observation that was then transposed into computer systems — a so-called
+bottom-up approach. However, this trend led to specific solutions that hardly scale up with application complexity.
+Novel techniques -- and the one that we follow in this work -- consist of a top-down global-to-local approach where designers define the system outcome directly at the collective level. Among the many (like Buzz, TOTA) in this thesis, we will take into consideration Aggregate Computing since it enables the definition of self-
+organising collective behaviour through the manipulation of a distributed data structure called computational field. In this way, the program specification is “collectively” declared, abstracting over underlying aspects – such as network topology or communication protocol – and making it applicable to any system size. 
+
+Even if Aggregate Computing is applied already in different scenarios like crowds of people, smart cities, and large-scale IoT, it currently lacks software architecture (middleware), systematic program definition, abstraction layers (DSL) and foundational aspects. Consequently, my thesis aims to investigate and analyse critically Aggregate
+Computing techniques in the field of CPSWs. This investigation will address multiple directions
+like distributed intelligence, flexible middlewares, and ad-hoc building blocks, possibly leading to
+contributions both at a foundational and “architectural” level. In this process, Machine Learning techniques could be used in support of Aggregate Computing to enhance adaptivity
+
+The proposal is then structured as follow. In \Cref{background} I discuss the current state-of-the-art methodologies and related works in the field CPSWs behaviour definition.
+In \Cref{contribution} I devise my thesis contribution in the path of engineering predictable outcome in CPSWs. Furthermore, I show my preliminary works done in my first PhD year and the future works that I plan to do. 
+
+
+\section{Background} \label{background}
 \subsection{Swarm intellingence}
 \subsection{Multi-Agent systems}
 \subsection{Aggregate Computing}
-\section{Contributions}
+\section{Contribution} \label{contribution}
 \subsection{Thesis proposal}
 \subsection{Preliminary contributions}
 \subsubsection{ScaFi-Web -- A tools for a distributed monitoring}
@@ -99,7 +122,7 @@ As a final result of my PhD, we intend to reach a seamless integration of Aggreg
 \subsection{Future works}
 \subsubsection{Swarm API}
 \subsubsection{Middleware-level learning}
-\section{Conclusion}
+\subsection{Evaluation}\label{evaluation}
 \nocite{*}
 \bibliographystyle{ieeetr}
 \bibliography{biblio}
