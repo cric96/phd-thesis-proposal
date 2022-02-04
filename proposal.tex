@@ -83,7 +83,7 @@ Prof. Matteo Ferrara}
 	Therefore, my thesis is focused on finding a systematic and reproducible way to design \cpsw{}. 
 	In particular, we plan to leverage \acfull{} -- a novel top-down global-to-local programming model.
 	%
-	As a final result of my PhD, we intend to analyse the application of Aggregate Computing in \cpsw{}. This will touch on several aspects like distributed intelligence, flexible and opportunistic middlewares, building blocks and ad-hoc API.
+	As a final result of my PhD, we intend to analyse the application of \acfull{} in \cpsw{}. This will touch on several aspects like distributed intelligence, flexible and opportunistic middlewares, building blocks and ad-hoc API.
 }
 \newpage
 \tableofcontents
@@ -112,14 +112,14 @@ bottom-up approach. However, this trend led to specific solutions that hardly sc
 %
 Novel techniques -- and the one that we follow in this work -- consist of a top-down global-to-local approach where designers define the system outcome directly at the collective level.
 %
-Among the many (like Buzz~\cite{DBLP:journals/software/PinciroliB16}, TOTA~\cite{DBLP:conf/icdcsw/MameiZL03}) in this thesis we will take into consideration \textit{\acfull{}}(\ac{})~\cite{DBLP:journals/computer/BealPV15} since it enables the definition of self-organising collective behaviours that can be composed in a functional manner. In this way, the \textit{aggregate} programs (i.e. programs written using \ac{})) can be reused in different scenario and scaled with complexity. 
+Among the many (like Buzz~\cite{DBLP:journals/software/PinciroliB16}, TOTA~\cite{DBLP:conf/icdcsw/MameiZL03}) in this thesis we will take into consideration \textit{\acfull{}} (\ac{})~\cite{DBLP:journals/computer/BealPV15} since it enables the definition of self-organising collective behaviours that can be composed in a functional manner. In this way, the \textit{aggregate} programs (i.e. programs written using \ac{}) can be reused in different scenario and scaled with complexity. 
 
-Even if Aggregate Computing is applied already in different scenarios like crowds of people~\cite{DBLP:journals/computer/BealPV15}, smart cities~\cite{DBLP:journals/isci/CasadeiFPRSV19}, and large-scale IoT~\cite{DBLP:journals/fgcs/CasadeiFPRSV19}, it currently lacks software architecture (middleware), systematic program definition, abstraction layers (API) and foundational aspects.
+Even if \ac{} is applied already in different scenarios like crowds of people~\cite{DBLP:journals/computer/BealPV15}, smart cities~\cite{DBLP:journals/isci/CasadeiFPRSV19}, and large-scale IoT~\cite{DBLP:journals/fgcs/CasadeiFPRSV19}, it currently lacks software architecture (middleware), systematic program definition, abstraction layers (API) and foundational aspects.
 %
 Consequently, my thesis aims to investigate and analyse critically Aggregate
 Computing techniques in the field of \cpsw{}. 
 %
-This investigation will address multiple directions like distributed intelligence, flexible middlewares, and ad-hoc building blocks, possibly leading to contributions both at a foundational (i.e. building blocks, aggregate computing language, API) and ``architectural" level (middleware, message passing architecture, ...).
+This investigation will address multiple directions like distributed intelligence, flexible middlewares, and ad-hoc building blocks, possibly leading to contributions both at a foundational (i.e. building blocks, \ac{} language, API) and ``architectural" level (middleware, message passing architecture, ...).
 %
 In this process, Machine Learning (ML) -- and in particular Reinforcement Learning (RL) -- techniques will be used in support of \acfull{}~\cite{research} to improve adaptivity, efficiency and efficacy
 
@@ -169,7 +169,6 @@ A \cpsw{} could be seen as a multi-agent system and in particular a \emph{many}-
 Due to the high stochasticity of the environment, it is almost impossible to know and program the optimal behaviour for all agents in advance.
 
 This uncertainty results in the need of creating intelligent agents so that they can \emph{learn} the optimal behaviour and adapt to environmental changes.
-%% We are in particular interested in the application of learning in such kind of system, due to the different typically single agent perspective
 \subsubsection{Learning}
 In recent decades there has been an emerging trend in the use of RL 
 in multi-agent settings -- called Multi-Agent Reinforcement Learning (MARL) -- as a powerful, robust and adaptive learning paradigm.
@@ -197,9 +196,9 @@ The main problem with most of the solutions available in the literature is that 
 Furthermore in \cpsw{} we are mainly interested in learning algorithms that tackle \emph{homogenous} behaviour, i.e. the policy founded could be shared with the entire collective.
 \subsection{Aggregate Computing}
 
-Aggregate computing is an approach to specify or \emph{self-organising} behaviour of a MAS from a global perspective.
+\ac{} is an approach to specify or \emph{self-organising} behaviour of a MAS from a global perspective.
 %
-The aggregate program (i.e. a program written with aggregate computing) provides a way to map the local observations of an individual agent (i.e., sensing information, current agent state, and inbound messages from neighbours) to (eventually) globally-coherent local actions
+The aggregate program (i.e. a program written with \ac{}) provides a way to map the local observations of an individual agent (i.e., sensing information, current agent state, and inbound messages from neighbours) to (eventually) globally-coherent local actions
  (i.e., actuation instructions, and outbound messages).
 %
 
@@ -244,13 +243,13 @@ A full account of research about aggregate programming, field calculi, and \scaf
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{img/to-do-for-thesis.pdf}
-	\caption{Devise the current status of aggregate computing toolkit in literature. Dotted blocks mean a lack of that concept. Green block are the one that can be consider stable and reusable in \cpsw{} engineering. Red Block are the one that currently exists but need to be expanded in order to support \cpsw{}.}
+	\caption{Devise the current status of \ac{} toolkit in literature. Dotted blocks mean a lack of that concept. Green block are the one that can be consider stable and reusable in \cpsw{} engineering. Red Block are the one that currently exists but need to be expanded in order to support \cpsw{}.}
 	\label{fig:current-state}
 \end{figure}
-My PhD thesis will be focused on the engineering process of \cpsw{} leveraging Aggregate Computing abstractions. The choice of Aggregate Computing as a conceptual model for describing \cpsw{} behaviours is well fitted since it:
+My PhD thesis will be focused on the engineering process of \cpsw{} leveraging \ac{} abstractions. The choice of \ac{} as a conceptual model for describing \cpsw{} behaviours is well fitted since it:
 \begin{itemize}
 	\item allows defining collective behaviour failure robust and scale-independent: the aggregate programs are expressed through manipulation of computational field, abstracting over nodes itself and treating the systems like a computational blob that evolves in time. In doing that, the logic is independent of the node population, so it handles natively failure, openness and the same program can be applied to very dense IT networks.
-	\item enhances the possibility to \textit{program} self-organisation: Typically, self-organisation is something that was achieved by observing natural phenomena. Aggregate Computing wants to give a systematic way to let \textit{self-organising} behaviour programmable. To do that, the programs are defined using a composition of building blocks that expose self-organising patterns.
+	\item enhances the possibility to \textit{program} self-organisation: Typically, self-organisation is something that was achieved by observing natural phenomena. \ac{} wants to give a systematic way to let \textit{self-organising} behaviour programmable. To do that, the programs are defined using a composition of building blocks that expose self-organising patterns.
 	\item is applicable to different deployment kinds leveraging modern complex IT infrastructures: Aggregate program does not depend on any particular IT network framework. Potentially, it could be applied in cloud-like systems, P2P networks and client and server architecture (the direction of pulverisation). This is particularly important for \cpsw{} since they could leverage different kinds of networks.
 \end{itemize}
 
@@ -259,24 +258,24 @@ In particular, the main concerns where my work is placed are:
 \begin{itemize}
 	\item development of \textit{flexible} middleware: In this year, the main effort of this line of the research concern \textit{foundational} aspects. However, currently, little effort is done to make aggregate programs applicable to various deployment kinds. Furthermore, we would like to leverage current IT infrastructures opportunistically (like edge computing or osmotic computing). In this line, in my thesis, I would produce software artefact in order to \textit{support} such kind of middleware for \cpsw{}.
 	\item building blocks definition from \cpsw{}: During the study and the analysis of cpswWs, we would encounter the possibility of describing new building blocks. For instance, in swarms the concept of \emph{cluster} is central for several reasons: identifying a group of entities with common capabilities, we can use it to produce a mean view of a certain zone, and so on. Therefore, we probably need to enlarge the current building block set to new constructs, that possibly could be useful also to other scenarios (like smart cities, smart grid, ...).
-	\item definition of API for swarm-like behaviour: Aggregate Computing is based on a layered approach. Typically, for each different scenario, developers should define an API to support a particular kind of application. So, in this thesis, we will focus on the definition of common abstraction needed to program \cpsw{}.
-	\item improvements of the entire Aggregate Computing stack with Machine Learning: Aggregate computing stack concern different aspects, from API to field-calculus to middleware. Machine Learning -- and in particular Reinforcement Learning -- in this context could be used as an intrinsic mechanism to improve adaptivity.
+	\item definition of API for swarm-like behaviour: \ac{} is based on a layered approach. Typically, for each different scenario, developers should define an API to support a particular kind of application. So, in this thesis, we will focus on the definition of common abstraction needed to program \cpsw{}. Here novel abstraction used in reactive programming and functional programming could be an effective way to express \textit{swarm} behaviour enhancing compositionality.
+	\item improvements of the entire \ac{} stack with Machine Learning: \ac{} stack concern different aspects, from API to field-calculus to middleware. Machine Learning -- and in particular Reinforcement Learning -- in this context could be used as an intrinsic mechanism to improve adaptivity. In general, we do not want to use Machine Learning to completely synthesise a program (as done in automatic design). Here we want to reach a kind of \textit{hybrid} approach, we a part of the system learns through experience but another is yet defined declaratively using \ac{} abstractions
 \end{itemize}
 
 \subsection{Preliminary contributions}
 In my first year of PhD, my activities have been centred on
-the integration of Aggregate Computing with Machine Learning capability to create even more
+the integration of \ac{} with Machine Learning capability to create even more
 intelligent collective behaviour. 
 
 My work climaxes with ~\cite{research} where I explain different suitable approaches to
-enhance Aggregate Computing with Machine learning. Finally, in the last period, I made concrete
-experiments with Reinforcement Learning -- in particular, Q-Learning \cite{} -- improving the current Aggregate Computing solutions.
+enhance \ac{} with Machine learning. Finally, in the last period, I made concrete
+experiments with Reinforcement Learning -- in particular, Hysteretic Q-Learning \cite{hysteretic-q} -- improving the current \ac{} solutions.
 
 Concerning middleware aspects, my research activities aim at closing the gap between
 its abstract space and its application in concrete systems. In this direction, I made mainly contributions to \scafi. In particular, we produce two articles concerning ScaFi-Web -- a web-based tool that could support monitoring aspects and \scafi Loci -- a type-safe deployment methodology leveraging multi-tier programming.
 \subsubsection{ScaFi-Web -- A tool for a distributed monitoring}
 \scafiweb{}\footnote{\url{https://scafi.github.io/web}}
- is an online playground for learning aggregate computing, experimenting with it, and monitoring executions in a browser.
+ is an online playground for learning \ac{}, experimenting with it, and monitoring executions in a browser.
 % a  web-based platform supporting \scafi{} in-browser that
 It currently features:
 \begin{itemize}
@@ -286,14 +285,14 @@ It currently features:
  \item visualisation, inspection, and interaction tools integrated with the simulated environment.
 \end{itemize}
 
-Furthermore, it also provides a stepping stone towards a monitoring and control system for aggregate computing deployments.
+Furthermore, it also provides a stepping stone towards a monitoring and control system for \ac{} deployments.
 
 Indeed, In the context of field-based coordination, automated runtime verification approaches have been recently investigated, whereby spatial or temporal logics are mapped to field calculus programs to directly encode the behaviour of decentralised monitoring.
 
 The \scafiweb{}'s frontend has been designed to be adaptable to different backends; indeed, the UI is completely separated from the underlying aggregate execution system. 
 
 \subsubsection{ScaFi Loci -- Towards a type-safe deployment of Pulverised Architecture}
-Aggregate computing defines a conceptual model by which is possible to define collective computation. Practically, each node needs to have a notion of the neighbourhood (i.e what nodes are near to me) following a certain metric. \textit{How} this neighbourhood is built, is transparent for the computational model. Therefore it is possible to deploy the same application in different IT networks.
+\ac{} defines a conceptual model by which is possible to define collective computation. Practically, each node needs to have a notion of the neighbourhood (i.e what nodes are near to me) following a certain metric. \textit{How} this neighbourhood is built, is transparent for the computational model. Therefore it is possible to deploy the same application in different IT networks.
 
 Pulverised architectures (i.e. pulverisation) go in this direction, identifying the main \textit{deployable} units that can be moved in different concrete nodes, the core idea is that the functional
 the behaviour of a distributed application is fundamentally orthogonal to the actual deployment of the services that compose it.
@@ -309,11 +308,11 @@ in a single compilation unit with a single language.
 This work could be seen as a piece of the flexible middleware that we intend to build, focused only on the deployment aspects.
 
 \section{Future works}\label{future}
-
+This section concludes the thesis proposal defining the next step in the PhD path. In particular, we want to put the first blocks for effective Reinforcement Learning and \acfull{} integrations. Furthermore, we want to define a reusable API applied in \cpsw{} and a first PoF of a flexible middleware combing the first works done in my PhD. 
 \subsection{Swarm API}
-The thesis will extend the current aggregate computing stack with high-level API about swarms behaviours (Swarm API) like flocking, foraging, blinking and spreading of information.  Consequently, self-adaptive properties have to be verified as done in other building blocks.  The swarm API will not only mimic some nature-inspired behaviours, but it will give a general interface to solve common collective problems. The API could be reused under the general collective adaptive system (CAS) context.
-\subsection{Improve to speed up convergence: Machine Learning applied to Building Blocks}
-Aggregate Computing based its logic in \textit{compositionality} inspired by functional programming. The idea is that complex behaviours can be defined only through the composition of \emph{building blocks}. Furthermore, based on these programming bricks, relevant collective properties are proven such as self-stabilization and eventual consistency. 
+The thesis will extend the current \ac{} stack with high-level API about swarms behaviours (Swarm API) like flocking, foraging, blinking and spreading of information.  Consequently, self-adaptive properties have to be verified as done in other building blocks.  The swarm API will not only mimic some nature-inspired behaviours, but it will give a general interface to solve common collective problems. The API could be reused under the general collective adaptive system (CAS) context.
+\subsection{Improve to speed up convergence: Reinforcement Learning applied to Building Blocks}
+\ac{} based its logic in \textit{compositionality} inspired by functional programming. The idea is that complex behaviours can be defined only through the composition of \emph{building blocks}. Furthermore, based on these programming bricks, relevant collective properties are proven such as self-stabilization and eventual consistency. 
 
 Currently, the key problem with those building blocks is that they aren't able to be used in any kind of network topology. Indeed we are dealing with high node dynamic, the overall computation field became quite a noise and unstable -- leading to ever reaching our intended result.
 
