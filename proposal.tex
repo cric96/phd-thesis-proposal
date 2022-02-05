@@ -355,13 +355,17 @@ These problems are partially tackled in different \marl{} algorithms, but a one-
 Initially, we aim at applying \rl{} with a CTDE methodology, so we imagine that we could leverage simulation.
 Another thriving area though is to use \item{online} (continual) learning, so the aggregate program continually adjusts itself to improve a global utility. Even if some approaches exists~\cite{DBLP:conf/icml/OmidshafieiPAHV17}, currently is very challenging to apply learning on such a large scale online. Therefore probably will be out-of-the-scope for this thesis but it will be future work for continuing the integration \ac{} and \rl{} integration. 
 \subsection{Middleware-level learning}
+\ac{} gives a theoretical framework by which is possible to express composable collective behaviours. It abstracts over various aspects such as round frequency -- it supposes a periodic and fair evaluation -- neighbourhood discovery, and message delivery.
+%%
+Typically, they will be managed by executions aggregate framework or possibility by \ac{} middlewares.
+Novel researches tackle this problem, maintaining the same high-level specification (i.e the \emph{aggregate program}) but by fine-tuning underlying aspect (e.g. round frequency).
 
-%% Aggregate computing give a theoretical framework by which is possible to describe composable collective behaviours
-%% It abstract over various aspect such us aggregate program evaluation, neighoborhood discovery, and message sending.
-%% Novel research try to focusing on such aspect.
-%% In particular, distributed scheduler is a novel techinquie by which is possbile to define when the program will be locally execyuted, using the same  aggregate computing language
-%% Speaking about message sending, when we have to deal with high density network, it problably have sense to reduce the message sent to neighbours to avoid  a message waste.
-%% Talk about the aspect of time field (distributed scheduler) and space fluid (discard message opportunistically).
+For instance, \emph{Distributed schedulers}~\cite{DBLP:journals/corr/abs-2012-13806} has been focused on a \emph{efficient} way to module the round frequency of aggregate programs. Indeed, something ti is necessary to tune the program frequency to reduce the energy consumption (e.g. in sensor networks for instance). \emph{distributed schedulers} try to tune the frequency use the \ac{} itself.
+In our vision, \rl{} could be used to autonomously tune the overall system frequency by means of a global utility optimization, reducing the complexity in configuring the scheduling policy.
+
+Another aspect that should be optimized by \rl{} at the middleware level should be the message delivery policy. Indeed, it is not sustainable to continually share messages to the entire neighbourhood when the network is very dense -- that is common in \cpsw{}. In this situation, it is possible to send only a few messages maintaining the same high-level specification. This should be again tuned via \rl{} minimizing the delivery of the total message maintaining the same global outcome.
+
+Definitely, \emph{learning} should be a key concept to create flexible middleware necessary to \cpsw{}, and so it will be a part of my thesis works. 
 
 \bibliographystyle{ieeetr}
 \bibliography{biblio}
