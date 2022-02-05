@@ -108,7 +108,7 @@ Traditional design methodologies are inadequate for \cpsw{} engineering, due to 
 %
 Following this line, the goal of my research PhD thesis is to find a systematic methodology (models, techniques and algorithms) to synthesise and deploy self-organising behaviours with predictable outcomes for \cpsw{}.
 
-This is not the first effort in this direction. Indeed, traditionally, designers have been guided
+This is not the first effort that want to tackle this kind of systems. Indeed, traditionally, designers have been guided
 by natural phenomena observation that was then transposed into computer systems -- a so-called
 bottom-up approach. However, this trend led to specific solutions that hardly scale up with application complexity.
 %
@@ -239,7 +239,7 @@ Rounds execution is completely asynchronous, so there is no global clock or barr
 %
 The combination of the logic of the aggregate program and such a collective, proactive, and periodical execution can promote the pursuit of collective adaptive behaviour
 
-Aggregate computing is embodied by concrete aggregate programming languages~\cite{viroli2019jlamp-si-coord},
+\ac{} is embodied by concrete aggregate programming languages~\cite{viroli2019jlamp-si-coord},
  such as \scafi{}~\cite{DBLP:conf/isola/CasadeiVAD20,DBLP:journals/eaai/CasadeiVAPD21},
  a Domain-Specific Language (DSL) embedded in Scala
  as well as a toolchain for aggregate system development and simulation~\cite{Casadei2016mass}.
@@ -252,7 +252,7 @@ Additionally, ScaFi also represents an agile framework for testing experimental 
 %
 Hence, among the existing languages for aggregate programming, we believe \scafi{} is the one better fitting rich scenarios like what we expected for \cpsw{}.
 %
-Finally, we need to leverage simulations to verify collective behaviours specifications since it is typically costly to set up a large scale framework. In this direction. Alchemist~\cite{} it is the standard de-facto to stimulate aggregate programs and this will be our reference for verifying our results~\cite{Pianini_2013}.
+Finally, we need to leverage simulations to verify collective behaviours specifications since it is typically costly to set up a large scale framework. In this context, Alchemist~\cite{} it is the standard de-facto to stimulate aggregate programs and this will be our reference for verifying our results~\cite{Pianini_2013}.
 
 A full account of research about aggregate programming, field calculi, and \scafi{} is beyond the scope of this proposal; more details can be found in~\cite{viroli2019jlamp-si-coord,DBLP:journals/eaai/CasadeiVAPD21}.
 
@@ -310,9 +310,9 @@ Indeed, In the context of field-based coordination, automated runtime verificati
 The \scafiweb{}'s frontend has been designed to be adaptable to different backends; indeed, the UI is completely separated from the underlying aggregate execution system. 
 
 \subsubsection{ScaFi Loci -- Towards a type-safe deployment of Pulverised Architecture}
-\ac{} defines a conceptual model by which is possible to define collective computation. Practically, each node needs to have a notion of the neighbourhood (i.e what nodes are near to me) following a certain metric. \textit{How} this neighbourhood is built, is transparent for the computational model. Therefore it is possible to deploy the same application in different IT networks.
+\ac{} defines a conceptual model by which is possible to define collective computation. Practically, each node needs to have a notion of neighbourhood (i.e what nodes are near to me). \textit{How} this neighbourhood is built, is transparent for the computational model. Therefore it is possible to deploy the same application in different IT networks.
 
-Pulverised architectures (i.e. pulverisation) go in this direction, identifying the main \textit{deployable} units that can be moved in different concrete nodes, the core idea is that the functional
+Pulverised architectures (i.e. pulverisation~\cite{DBLP:journals/fi/CasadeiPPVW20}) go in this direction, identifying the main \textit{deployable} units that can be moved in different concrete nodes, the core idea is that the functional
 the behaviour of a distributed application is fundamentally orthogonal to the actual deployment of the services that compose it.
 
 However, pulverisation does not specify how a pulverised architecture should
@@ -328,7 +328,7 @@ This work could be seen as a piece of the flexible middleware that we intend to 
 \section{Future works}\label{future}
 This section concludes the thesis proposal defining the next step in the PhD path. In particular, we want to put the first blocks for effective Reinforcement Learning and \acfull{} integrations. Furthermore, we want to define a reusable API applied in \cpsw{} and a first PoF of a flexible middleware combing the first works done in my PhD. 
 \subsection{Swarm API}
-The thesis will extend the current \ac{} stack with high-level API about swarms behaviours (Swarm API) like flocking, foraging, blinking and spreading of information.  Consequently, self-adaptive properties have to be verified as done in other building blocks.  The swarm API will not only mimic some nature-inspired behaviours, but it will give a general interface to solve common collective problems. The API could be reused under the general collective adaptive system (CAS), swarm robotics or in multi-agents context.
+The thesis will extend the current \ac{} stack with high-level API about swarms behaviours (Swarm API) like flocking, foraging, blinking and spreading of information.  Consequently, self-adaptive properties have to be verified as done in other building blocks.  The swarm API will not only mimic some nature-inspired behaviours, but it will give a general interface to solve common collective problems. The API could be reused under the general collective adaptive system (CAS), swarm robotics or in multi-agents contexts.
 To perform this abstraction layer definition we intend to:
 \begin{itemize}
 	\item perform a literature review of API/DSL for swarm robotics;
@@ -355,6 +355,7 @@ These problems are partially tackled in different \marl{} algorithms, but a one-
 Initially, we aim at applying \rl{} with a CTDE methodology, so we imagine that we could leverage simulation.
 Another thriving area though is to use \item{online} (continual) learning, so the aggregate program continually adjusts itself to improve a global utility. Even if some approaches exists~\cite{DBLP:conf/icml/OmidshafieiPAHV17}, currently is very challenging to apply learning on such a large scale online. Therefore probably will be out-of-the-scope for this thesis but it will be future work for continuing the integration \ac{} and \rl{} integration. 
 \subsection{Middleware-level learning}
+
 %% Aggregate computing give a theoretical framework by which is possible to describe composable collective behaviours
 %% It abstract over various aspect such us aggregate program evaluation, neighoborhood discovery, and message sending.
 %% Novel research try to focusing on such aspect.
