@@ -148,18 +148,18 @@ To compare similar definitions, \cpsw{} is a kind of Complex Adaptive system~\ci
 %%
 Collective Adaptive Systems~\cite{DBLP:journals/corr/abs-1108-5643} is near to our \cpsw{} description but in our definition agents pursue \emph{collective} (not individual) goals, and they have a \emph{homogenous} behaviour.
 \subsection{Swarm Intellingece}
-Swarm intelligence has a similar starting point as our approach since it tries to use the tactics observed in ants -- social animals in general -- in swarm robotics. Behaviours are derived in a bottom-up fashion, hence designers have tried to achieve a collective behaviour through emergence observing local animal behaviours.
+Swarm intelligence has a similar starting point to our approach since it tries to use the tactics observed in social animals in swarm robotics. The behaviours are derived in a bottom-up fashion, hence designers have tried to achieve a collective behaviour through emergence observing local animal behaviours.
 %
 For instance, artificial stigmergy~\cite{DBLP:journals/fgcs/DorigoBT00} derives from that studies. But, nowadays, swarm intelligence is more focused on algorithms. 
 Indeed, the collective behaviours observed in nature are leveraged to perform \textit{optimisation} strategy -- or to directly solve some problem by searching in the solution space.
 %%
-There are several examples of optimization swarm intelligence optimization algorithms,  such as Ant Colony Optimization (ACO)~\cite{DBLP:journals/tsmc/DorigoMC96}, Particle Swarm Optimization (PSO)~\cite{DBLP:conf/icnn/KennedyE95} and Flock of Starling Optimization (FSO)~\cite{DBLP:series/sci/FulgineiS11}.
+There are several examples of optimisation swarm intelligence optimisation algorithms,  such as Ant Colony Optimisation (ACO)~\cite{DBLP:journals/tsmc/DorigoMC96}, Particle Swarm Optimisation (PSO)~\cite{DBLP:conf/icnn/KennedyE95} and Flock of Starling Optimisation (FSO)~\cite{DBLP:series/sci/FulgineiS11}.
 
 Even if they are important approaches, we are not directly interested in them. Indeed, we take \textit{inspiration} from swarms but only to achieve similar behaviour in the artificial swarm leveraging self-organisation. We do not want to \textit{mimic} nature but leverage the same mechanism to reach robust collective systems.
 \subsection{Swarm Robotics}
 Historically, swarm robotics started from the first Swarm intelligence approaches. Then, it is defined as the \textit{engineering} part of that branch. Indeed, the general goal of this branch is \emph{to define systematic and well-founded procedures for modelling, designing, realising, verifying, validating, operating, and maintaining a swarm robotics system}~\cite{DBLP:journals/swarm/BrambillaFBD13}.
 
-Here the focused are mainly or \textit{robots} that are \emph{autonomous}, \emph{situated}, and with \emph{no central control}. We aim to expand this vision also to other ``swarm-like'' systems, as a crowd of people, large scale IoT and smart cities where we do not have robots. 
+Here, the focus is mainly on \textit{robots} that are \emph{autonomous}, \emph{situated}, and with \emph{no central control}. We aim to expand this vision also to other ``swarm-like'' systems, such as a crowd of people, large scale IoT and smart cities where we do not have robots. 
 
 In particular, the novel branch of \textit{automatic design}~\cite{DBLP:journals/firai/FrancescaB16} is very appealing to be used in a wider sense -- namely in \cpsw{}. Here the controller is derived through \textit{genetic algorithms} or \textit{Multi-agent Reinforcement Learning} following a \textit{global} utility function. 
 \subsection{Multi-Agent Systems}
@@ -189,10 +189,10 @@ Other efforts have focussed on achieving equilibria such as Nash-equilibrium of 
 The problem is that it is used with few agents and scale hardly with the application complexity.
 %
 Finally, current emerging trends tend to leverage a so-called centralised training and decentralised execution (CTDE)~\cite{DBLP:journals/tcyb/NguyenNN20} approach, by which 
- agents should leverage the system-wide knowledge at training time and then at runtime they act independently~\cite{DBLP:journals/aamas/Hernandez-LealK19}. In this setting, Deep Learning is typically employed reaching and exceeding the state-of-the-art traditional \marl{} algorithms.
+ agents should leverage the system-wide knowledge at training time and then at runtime they act independently~\cite{DBLP:journals/aamas/Hernandez-LealK19}. In this setting, Deep Learning is typically employed, reaching and exceeding the state-of-the-art traditional \marl{} algorithms.
  
 The main problem with most of the solutions available in the literature is that they consider a small number of agents (or at least test them on small games) --- even if some novel trends exist, like Mean Field Reinforcement Learning~\cite{DBLP:journals/corr/abs-2108-02731}.
-Furthermore in \cpsw{} we are mainly interested in learning algorithms that tackle \emph{homogenous} behaviour, i.e. the policy founded could be shared with the entire collective.
+Furthermore, in \cpsw{} we are mainly interested in learning algorithms that tackle \emph{homogenous} behaviour, i.e. the policy founded could be shared with the entire collective.
 
 This section could not be exhaustive, \marl{} is a newly emerging research direction and multiple different viewpoints exist. The articles \cite{DBLP:journals/aamas/Hernandez-LealK19, DBLP:journals/corr/abs-1911-10635, DBLP:journals/corr/abs-1908-03963} give a comprehensive overview of current state-of-the-art solutions and ideas.
 \subsection{Aggregate Computing}
@@ -200,7 +200,7 @@ This section could not be exhaustive, \marl{} is a newly emerging research direc
 \ac{} is an approach to specify \emph{self-organising} behaviours from a global perspective.
 %
 The aggregate program (i.e. a program written with \ac{}) provides a way to map the local observations of an individual agent (i.e., sensing information, current agent state, and inbound messages from neighbours) to (eventually) globally-coherent local actions
- (i.e., actuation instructions, and outbound messages).
+ (i.e., actuation instructions and outbound messages).
 %
 
 Historically, aggregate programming originated from works drawing inspiration from nature: whereas the biological inspiration led to swarm intelligent MASs, where agents indirectly interact by pheromones \cite{DBLP:conf/atal/ParunakBS02}, the physical inspiration led to the idea of agents acting in environments empowered with potential fields \cite{DBLP:journals/trob/HwangA92}.
@@ -224,7 +224,7 @@ The idea of aggregate programming is to write programs talking about global beha
 %
 For an aggregate program to yield collective adaptive behaviour, continuous computation and communication are needed.
 %
-An individual atomic step involving context acquisition, computation of the program, and neighbourhood-based communication is called a \emph{round}.
+An individual atomic step involving context acquisition, computation of the program, and neighbourhood-based communication is called \emph{round}.
 %
 In detail, a \emph{round} run at some device consists of:
 \begin{enumerate}
@@ -260,7 +260,7 @@ A full account of research about aggregate programming, field calculi, and \scaf
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{img/to-do-for-thesis.pdf}
-	\caption{Devises the current status of \ac{} toolkit in literature. Dotted blocks mean a lack of that concept. Green blocks are the one that can be consider stable and reusable in \cpsw{} engineering. Red blocks are the one that currently exists but need to be expanded in order to support \cpsw{}.}
+	\caption{Devises the current status of \ac{} toolkit in literature. Dotted blocks mean a lack of that concept. Green blocks are the ones that can be considered stable and reusable in \cpsw{} engineering. Red blocks are the ones that currently exist but need to be expanded in order to support \cpsw{}.}
 	\label{fig:current-state}
 \end{figure}
 My PhD thesis will be focused on the engineering process of \cpsw{} leveraging \ac{} abstractions. The choice of \ac{} as a conceptual model for describing \cpsw{} behaviours is well fitted since it:
@@ -270,13 +270,13 @@ My PhD thesis will be focused on the engineering process of \cpsw{} leveraging \
 	\item is applicable to different deployment kinds leveraging modern complex IT infrastructures: Aggregate program does not depend on any particular IT network framework. Potentially, it could be applied in cloud-like systems, P2P networks and client and server architecture (the direction of pulverisation). This is particularly important for \cpsw{} since they could leverage different kinds of networks.
 \end{itemize}
 
-This choice impact strongly on the design process of collective application. Some of the concerns are already tackled in related words but others are currently quite unexplored and for us are essential in the context of \cpsw{}, and this is where my thesis work will be focused on.
-In particular, the main concerns where my work is placed are:
+This choice impact strongly on the design process of collective application. Some of the concerns are already tackled in related words, but others are currently unexplored and, for us, they are essential in the context of \cpsw{}, and this is where my thesis work will be focused on.
+In particular, my PhD aims at:
 \begin{itemize}
-	\item development of \textit{flexible} middleware: In this year, the main effort of this line of the research concern \textit{foundational} aspects. However, currently, little effort is done to make aggregate programs applicable to various deployment kinds. Furthermore, we would like to leverage current IT infrastructures opportunistically (like edge computing or osmotic computing). In this line, in my thesis, I would produce software artefact in order to \textit{support} such kind of middleware for \cpsw{}.
-	\item building blocks definition from \cpsw{}: During the study and the analysis of cpswWs, we would encounter the possibility of describing new building blocks. For instance, in swarms the concept of \emph{cluster} is central for several reasons: identifying a group of entities with common capabilities, we can use it to produce a mean view of a certain zone. Therefore, we probably need to enlarge the current building block set to new constructs, that possibly could be useful also to other scenarios (like smart cities, smart grid, ...).
-	\item definition of API for swarm-like behaviour: \ac{} is based on a layered approach. Typically, for each different scenario, developers should define an API to support a particular kind of application. So, in this thesis, we will focus on the definition of common abstraction needed to program \cpsw{}. Here novel abstraction used in reactive programming and functional programming could be an effective way to express \textit{swarm} behaviour enhancing compositionality.
-	\item improvements of the entire \ac{} stack with ML: \ac{} stack concerns different aspects, from API to field-calculus to middleware. ML -- and in particular \rl{} -- in this context could be used as an \emph{intrinsic} mechanism to improve \emph{adaptivity}. In general, we do not want to use ML to completely synthesise a program (as done in automatic design). Here we want to reach a kind of \textit{hybrid} approach, we a part of the system learns through experience but another is yet defined declaratively using \ac{} abstractions
+	\item developing a \textit{flexible} middleware: In these years, the main effort of this line of research concerns \textit{foundational} aspects. However, little efforts are done to make aggregate programs applicable to various deployment kinds. Furthermore, we would like to leverage current IT infrastructures opportunistically (like edge computing or osmotic computing). In this line, we would produce software artefacts in order to \textit{support} such kind of middleware for \cpsw{}.
+	\item creating building blocks for \cpsw{}: During the study and the analysis of cpswWs, we would encounter the possibility of describing new building blocks. For instance, in swarms the concept of \emph{cluster} is central for several reasons: identifying a group of entities with common capabilities, we can use it to produce a mean view of a certain zone. Therefore, we probably need to widen the current building block set to new constructs, that possibly could be useful also to other scenarios (like smart cities, smart grid, ...).
+	\item developing an API for swarm-like behaviour: \ac{} is based on a layered approach. Typically, for each different scenario, developers should define an API to support a particular kind of application. So, in this thesis, we will focus on the definition of common abstraction needed to program \cpsw{}. Here novel abstraction used in reactive programming and functional programming could be an effective way to express \textit{swarm} behaviour enhancing compositionality.
+	\item improving the entire \ac{} stack with ML: \ac{} stack concerns different aspects, from API to field-calculus to middleware. ML -- and in particular \rl{} -- in this context could be used as an \emph{intrinsic} mechanism to improve \emph{adaptivity}. In general, we do not want to use ML to completely synthesise a program (as done in automatic design). Here we want to reach a kind of \textit{hybrid} approach, we a part of the system learns through experience but another is yet defined declaratively using \ac{} abstractions
 \end{itemize}
 
 \subsection{Preliminary contributions}
