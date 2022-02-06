@@ -10,6 +10,7 @@
 \usepackage{csquotes}
 %\usepackage{natbib}
 \usepackage[colorlinks, filecolor=dark_blue, urlcolor=dark_blue, linkcolor=black, citecolor=black]{hyperref}
+
 \usepackage{cleveref}
 \begin{document}
 \sloppy
@@ -133,7 +134,7 @@ Finally, in \Cref{future} I describe what are the activities that I plan to do i
 \section{Background} \label{background}
 The goal of this section is to clarify what we mean with \textit{Cypher-Physical Swarms}, what systems are similar to our definition and what research area have to deal with similar problems.
 \subsection{Cypher-Physical Swarms}
-This term is used to describe a large number of computational nodes that collaborate to solve a collective problem as the behaviour that we observed in natural ``swarm'' systems.
+This term is used to describe a large number of computational nodes that collaborate to solve a collective problem similar to what we observe in natural ``swarm'' systems.
 %
 These systems have a large population of networked nodes (hundreds -- thousands), and they are typically \textit{open} (i.e. we cannot know the total node number apriori). Consequently, the collective behaviour should be \textit{scale-independent} (i.e. the same program must work in small networks as well as in very large networks).
 %
@@ -141,30 +142,30 @@ Besides, nodes are associated with a \textit{physical} asset through sensors and
 
 The nodes could be heterogeneous, but we imagine a homogenous local behaviour (i.e. each node should execute the same local logic). Furthermore, nodes act collaboratively, and are not selfish -- they always operate for the global collective utility.
 
-We presuppose that the overall system could not use a central entity -- so we need to deal with distributed control. Even if modern architectures could be used (e.g cloud/edge infrastructures), in general, we need to react to local problems fastly. Hence, moving this decision far from the physical assets could be dangerous (since they are a kind of \emph{critical system}).
+We suppose that the overall system could not use a central entity -- so we need to deal with distributed control. Even if modern architectures could be used (e.g cloud/edge infrastructures), in general, we need to react to local problems fastly. Hence, moving this decision far from the physical assets could be dangerous (since they are a kind of \emph{critical system}).
 %
 As a concluding note, we are interested in the \textit{macro-level} behaviour and not at the \textit{micro-level}. Hence we intend to describe the collective not by emergence, but by defining a global wanted structure.
 
-To compare similar definitions, \cpsw{} is a kind of Complex Adaptive system~\cite{holland1992complex}, but our vision enforces properties that and not necessarily in standard complex systems definition like the large agents' number and the collaborative agents' nature.
+\cpsw{} is a kind of Complex Adaptive system~\cite{holland1992complex}, but our vision enforces properties that and not necessarily in standard complex systems definition like the large agents' number and the collaborative agents' nature.
 %%
 Collective Adaptive Systems~\cite{DBLP:journals/corr/abs-1108-5643} is near to our \cpsw{} description but in our definition agents pursue \emph{collective} (not individual) goals, and they have a \emph{homogenous} behaviour.
 \subsection{Swarm Intellingece}
 Swarm intelligence has a similar starting point to our approach since it tries to use the tactics observed in social animals in swarm robotics. The behaviours are derived in a bottom-up fashion, hence designers have tried to achieve a collective behaviour through emergence observing local animal behaviours.
 %
 For instance, artificial stigmergy~\cite{DBLP:journals/fgcs/DorigoBT00} derives from that studies. But, nowadays, swarm intelligence is more focused on algorithms. 
-Indeed, the collective behaviours observed in nature are leveraged to perform \textit{optimisation} strategy -- or to directly solve some problem by searching in the solution space.
+Indeed, the collective behaviours observed in nature are leveraged to perform \textit{optimisation} strategies or to directly solve problems by searching in the solution space.
 %%
-There are several examples of optimisation swarm intelligence optimisation algorithms,  such as Ant Colony Optimisation (ACO)~\cite{DBLP:journals/tsmc/DorigoMC96}, Particle Swarm Optimisation (PSO)~\cite{DBLP:conf/icnn/KennedyE95} and Flock of Starling Optimisation (FSO)~\cite{DBLP:series/sci/FulgineiS11}.
+There are several examples of swarm intelligence optimisation algorithms, such as Ant Colony Optimisation (ACO)~\cite{DBLP:journals/tsmc/DorigoMC96}, Particle Swarm Optimisation (PSO)~\cite{DBLP:conf/icnn/KennedyE95} and Flock of Starling Optimisation (FSO)~\cite{DBLP:series/sci/FulgineiS11}.
 
 Even if they are important approaches, we are not directly interested in them. Indeed, we take \textit{inspiration} from swarms but only to achieve similar behaviour in the artificial swarm leveraging self-organisation. We do not want to \textit{mimic} nature but leverage the same mechanism to reach robust collective systems.
 \subsection{Swarm Robotics}
-Historically, swarm robotics started from the first Swarm intelligence approaches. Then, it is defined as the \textit{engineering} part of that branch. Indeed, the general goal of this branch is \emph{to define systematic and well-founded procedures for modelling, designing, realising, verifying, validating, operating, and maintaining a swarm robotics system}~\cite{DBLP:journals/swarm/BrambillaFBD13}.
+Historically, swarm robotics started from the first Swarm intelligence approaches. Then, it has emerged as the \textit{engineering} part of that branch. Indeed, the general goal of \emph{swarm engineering} is \emph{to define systematic and well-founded procedures for modelling, designing, realising, verifying, validating, operating, and maintaining a swarm robotics system}~\cite{DBLP:journals/swarm/BrambillaFBD13}.
 
 In Swarm Robotics, the focus is mainly on \textit{robots} that are \emph{autonomous}, \emph{situated}, and with \emph{no central control}. We aim to expand this vision also to other ``swarm-like'' systems, such as a crowd of people, large scale IoT and smart cities where we do not have robots. 
 
 In particular, the novel branch of \textit{automatic design}~\cite{DBLP:journals/firai/FrancescaB16} is very appealing to be used in \cpsw{}. In autonomic design approaches, the controller is derived through \textit{genetic algorithms} or \textit{Multi-agent Reinforcement Learning} following a \textit{global} utility function. 
 \subsection{Multi-Agent Systems}
-A \cpsw{} could be seen as a multi-agent system and in particular a \emph{many}-agent system where a group of autonomous entities are programmed to achieve some collective behaviour through \emph{repeated} sensing, computation, communication, and actuation.
+A \cpsw{} could be seen as a multi-agent system and in particular a \emph{many}-agent system where a group of autonomous entities are programmed to achieve collective behaviours through \emph{repeated} sensing, computation, communication, and actuation.
 
 Due to the high stochasticity of the environment, it is almost impossible to know and program the optimal behaviour for all agents in advance.
 
@@ -181,12 +182,12 @@ First attempts from \rl{} viewpoint,
  goes towards a so-called \textit{independent learning}~\cite{DBLP:journals/tsmc/BusoniuBS08} approach, where each agent learn locally against the whole environment~\cite{DBLP:conf/icml/Tan93}.
 
 %%% Put reference to independent learning overview
-The pro of these approaches is that their complexity does not scale up with the number of agents, 
+The pro of these approaches is that they can scale up with the number of agents, 
  but, unfortunately, the learning process is extremely non-stationary and unstable.
 % 
-Furthermore, they are heuristic and do not exist any convergence proof (even if, in practice, they often reach a good policy).
+%Furthermore, they are heuristic and do not exist any convergence proof (even if, in practice, they often reach a good policy).
 
-Other efforts have focussed on achieving equilibria such as Nash-equilibrium of Pareto optimality.
+Other efforts have focused on achieving game-theoretic properties, such as Nash-equilibrium of Pareto optimality.
 The problem is that it is used with few agents and scale hardly with the application complexity.
 %
 Finally, current emerging trends tend to leverage a so-called centralised training and decentralised execution (CTDE)~\cite{DBLP:journals/tcyb/NguyenNN20} approach, by which 
@@ -227,7 +228,7 @@ An aggregate program needs to continuously compute and communicate with neighbou
 %
 An individual atomic step involving context acquisition, computation of the program, and neighbourhood-based communication is called \emph{round}.
 %
-In detail, a \emph{round} run at some device consists of:
+In detail, a \emph{round} that runs at some device consists of:
 \begin{enumerate}
   \item \emph{context acquisition}: the device collects information from the sensors, the messages from neighbours (including the device itself---to model state);
   \item \emph{program evaluation}: the aggregate program is evaluated against the acquired context, yielding an export, namely the message to be sent to neighbours;
