@@ -74,9 +74,9 @@ Prof. Matteo Ferrara}
 	%
 	\cpsw{} are backed by emerging trends of autonomic, pervasive, ubiquitous computing that foster a vision of distributed systems composed of a considerable number of simple entities that collectively perform collective tasks.
 	%
-	These systems are similar to natural social-animal groups, where plentiful animals (like ants, sheep, \dots) achieve shared population-wide goals.
+	These systems are similar to natural social-animal groups, where plentiful animals (like ants, sheep, \dots) realise shared population-wide goals.
 	%
-	Furthermore, these behaviour are typically achieved through self-organisation, making the system robust to failures and highly scalable.
+	Furthermore, these behaviours are typically achieved through self-organisation, making the system robust to failures and highly scalable.
 	%
 	Inspired by nature, we define the notion of ``Cyber-Physical Swarms'' -- the extension of `swarms' in computer science.
 	%
@@ -93,7 +93,7 @@ Prof. Matteo Ferrara}
 \section{Introduction}
 The recent evolution of IT technologies fosters a vision in which computation is \textit{everywhere}. Several modern paradigms advance that vision, like ubiquitous~\cite{DBLP:journals/sigmobile/Weiser99}, pervasive~\cite{DBLP:journals/computer/SahaM03}, collective~\cite{DBLP:journals/computer/Abowd16}, and automatic computing~\cite{DBLP:journals/computer/KephartC03}.
 %
-These consider systems (typically \emph{cyber physical}) where a large number (hundreds - thousands - millions) of simple interacting devices collectively perform complicated tasks in a decentralised manner, acting and sensing through a shared environment. 
+These paradigms take into account systems (typically \emph{cyber physical}) where a large number (hundreds - thousands - millions) of simple interacting devices collectively perform complicated tasks in a decentralised manner, acting and sensing through a shared environment. 
 %
 Thus, they can be conceived as \textit{complex} systems like the ones observed in nature.
 %--  by means that we cannot understand the behaviour of the whole looking only at the parts.
@@ -113,26 +113,26 @@ bottom-up approach. However, this methodology led to specific solutions that har
 %
 Novel techniques -- and the one that we follow in this work -- consist of top-down global-to-local approaches where designers define the system outcome directly at the collective level.
 %
-Among the many (like Buzz~\cite{DBLP:journals/software/PinciroliB16}, TOTA~\cite{DBLP:conf/icdcsw/MameiZL03}) in this thesis, we will take into consideration \textit{\acfull{}} (\ac{})~\cite{DBLP:journals/computer/BealPV15} since it enables the definition of self-organising collective behaviours that can be composed functionally. In this way, the \textit{aggregate} programs (i.e. programs written using \ac{}) can be reused in different domains and can scale with domain complexity. 
+Among the many (like Buzz~\cite{DBLP:journals/software/PinciroliB16}, TOTA~\cite{DBLP:conf/icdcsw/MameiZL03}) in this thesis, we will take into consideration \textit{\acfull{}} (\ac{})~\cite{DBLP:journals/computer/BealPV15} since it enables the definition of self-organising collective behaviours that can be functionally composed. In this way, the \textit{aggregate} programs (i.e. programs written using \ac{}) can be reused in different domains and can scale with domain complexity. 
 
-Even if \ac{} is applied already in different scenarios like crowds of people~\cite{DBLP:journals/computer/BealPV15}, smart cities~\cite{DBLP:journals/isci/CasadeiFPRSV19}, and large-scale IoT~\cite{DBLP:journals/fgcs/CasadeiFPRSV19}, it currently lacks software architectures (middleware), systematic program definition, abstraction layers (API) and foundational aspects.
+Even if \ac{} is already applied in different scenarios like crowds of people~\cite{DBLP:journals/computer/BealPV15}, smart cities~\cite{DBLP:journals/isci/CasadeiFPRSV19}, and large-scale IoT~\cite{DBLP:journals/fgcs/CasadeiFPRSV19}, it currently lacks software architectures (middleware), systematic program definition, abstraction layers (API) and foundational aspects.
 %
-Consequently, my thesis aims to investigate and analyse critically \acfull{} techniques in the field of \cpsw{}.
+Consequently, my thesis aims to investigate and critically analyse \acfull{} techniques in the field of \cpsw{}.
 %
-This investigation will address multiple directions like distributed intelligence, flexible middlewares, and ad-hoc building blocks, possibly leading to contributions both at a foundational (i.e. building blocks, \ac{} language, API) and ``architectural" level (middleware, message passing architecture, ...).
+This investigation will cover multiple directions like distributed intelligence, flexible middlewares, and ad-hoc building blocks, possibly leading to contributions both at a foundational (i.e. building blocks, \ac{} language, API) and architectural level (middleware, message passing architecture, ...).
 %
-In this process, Machine Learning (ML) -- and in particular Reinforcement Learning (\rl{}) -- techniques will be used in support of \acfull{}~\cite{research} to improve adaptivity, efficiency and efficacy
+In this process, Machine Learning (ML) -- and in particular Reinforcement Learning (\rl{}) -- techniques will be used in support of \acfull{}~\cite{research} to improve adaptivity, efficiency and efficacy.
 
 The proposal is then structured as follow. In \Cref{background} I discuss the current state-of-the-art methodologies and related works in the field \cpsw{} behaviour definition.
 %
-In \Cref{contribution} I devise my thesis contribution in the path of engineering predictable outcome in \cpsw{}. In this section, I also show the preliminary works done in this first PhD year
+In \Cref{contribution} I devise my thesis contribution in the path of engineering predictable outcome in \cpsw{}. In this section, I also show the preliminary works done in this first PhD year.
 %
 Finally, in \Cref{future} I describe what are the activities that I plan to do in the rest of my PhD project.
 
 \section{Background} \label{background}
 The goal of this section is to clarify what we mean with \textit{Cyber-Physical Swarms}, what systems are similar to our definition, and what research areas have to deal with similar problems.
 \subsection{Cyber-Physical Swarms}
-This term is used to describe many computational nodes that collaborate to solve collective problems similar to what we observe in natural ``swarm'' systems.
+This term is used to describe many computational nodes that collaborate to solve collective problems, similarly to what we observe in natural ``swarm'' systems.
 %
 These systems have a large population of networked nodes (hundreds -- thousands), and they are typically \textit{open} (i.e. we cannot know the total node number apriori). Consequently, the collective behaviour should be \textit{scale-independent} (i.e. the same program must work in small networks as well as in very large networks).
 %
@@ -142,22 +142,22 @@ The nodes could be heterogeneous, but we imagine a \emph{homogenous} local behav
 
 We suppose that the overall system could not use a central entity -- so we need to deal with distributed control. Even if modern architectures could be used (e.g cloud/edge infrastructures), in general, we need to react to local problems quickly. Hence, moving this decision far from the physical assets could be dangerous (since they are a kind of \emph{critical systems}).
 %
-As a concluding note, we are interested in the \textit{macro-level} behaviour and not at the \textit{micro-level}. Hence, we intend to describe the collective not by emergence, but by defining a global wanted structure.
+As a concluding note, we want to consider their behaviour at the \textit{macro-level}, not at the \text{micro-level}. Hence, we intend to describe the collective not by emergence, but by defining a global wanted structure.
 
 \cpsw{} is a kind of Complex Adaptive system~\cite{holland1992complex}, but our vision enforces properties that are not necessarily present in standard complex systems' definition, like the large agents' number and the collaborative agents' nature.
 %%
 Collective Adaptive Systems~\cite{DBLP:journals/corr/abs-1108-5643} is near to our \cpsw{} description but in our definition agents pursue \emph{collective} (not individual) goals, and they have a homogenous behaviour.
-\subsection{Swarm Intellingece}
-Swarm intelligence has a similar starting point to our approach since it tries to use the tactics observed in social animals in swarm robotics. The behaviours are derived in a bottom-up fashion, hence designers have tried to achieve a collective behaviour through emergence observing local animal behaviours.
+\subsection{Swarm Intellingence}
+Swarm Intelligence has a similar starting point to our approach since it tries to apply the tactics observed to social animals in swarm robotics. The behaviours are derived in a bottom-up fashion, hence designers have tried to achieve a collective behaviour through emergence observing local animal behaviours.
 %
-For instance, artificial stigmergy~\cite{DBLP:journals/fgcs/DorigoBT00} derives from that studies. But, nowadays, swarm intelligence is more focused on algorithms. 
+For instance, artificial stigmergy~\cite{DBLP:journals/fgcs/DorigoBT00} derives from those studies. But, nowadays, Swarm Intelligence is more focused on algorithms. 
 Indeed, the collective behaviours observed in nature are leveraged to perform \textit{optimisation} strategies or to directly solve problems by searching in the solution space.
 %%
-There are several examples of swarm intelligence optimisation algorithms, such as Ant Colony Optimisation (ACO)~\cite{DBLP:journals/tsmc/DorigoMC96}, Particle Swarm Optimisation (PSO)~\cite{DBLP:conf/icnn/KennedyE95} and Flock of Starling Optimisation (FSO)~\cite{DBLP:series/sci/FulgineiS11}.
+There are several examples of Swarm Intelligence optimisation algorithms, such as Ant Colony Optimisation (ACO)~\cite{DBLP:journals/tsmc/DorigoMC96}, Particle Swarm Optimisation (PSO)~\cite{DBLP:conf/icnn/KennedyE95} and Flock of Starling Optimisation (FSO)~\cite{DBLP:series/sci/FulgineiS11}.
 
-Even if they are important approaches, we are not directly interested in them. Indeed, we take \textit{inspiration} from swarms but only to achieve similar behaviour in the artificial swarm leveraging self-organisation. We do not want to \textit{mimic} nature but leverage the same mechanism to reach robust collective systems.
+Even if they are important approaches, we are not directly interested in using them. Indeed, we draw \textit{inspiration} from swarms but only to achieve similar behaviour in the artificial swarm leveraging self-organisation. We do not want to \textit{mimic} nature but we aim to exploit the same mechanism to build robust collective systems.
 \subsection{Swarm Robotics}
-Historically, swarm robotics started from the first Swarm intelligence approaches. Then, it has emerged as the \textit{engineering} part of that branch. Indeed, the general goal of \emph{swarm engineering} is \emph{to define systematic and well-founded procedures for modelling, designing, realising, verifying, validating, operating, and maintaining a swarm robotics system}~\cite{DBLP:journals/swarm/BrambillaFBD13}.
+Historically, Swarm Robotics derives from the first Swarm Intelligence approaches. Then, it has emerged as the \textit{engineering} part of that branch. Indeed, the general goal of \emph{swarm engineering} is \emph{to define systematic and well-founded procedures for modelling, designing, realising, verifying, validating, operating, and maintaining a swarm robotics system}~\cite{DBLP:journals/swarm/BrambillaFBD13}.
 
 In Swarm Robotics, the focus is mainly on \textit{robots} that are \emph{autonomous}, \emph{situated}, and with \emph{no central control}. We aim to expand this vision also to other ``swarm-like'' systems, such as a crowd of people, large scale IoT and smart cities where we do not have robots. 
 
@@ -172,7 +172,7 @@ This uncertainty results in creating intelligent agents so that they can \emph{l
 In recent decades, there has been an emerging trend in the use of \rl{} 
 in multi-agent settings -- called Multi-Agent Reinforcement Learning (\marl{}) -- as a powerful, robust and adaptive learning paradigm.
 %
-Progress has been considerable, and a broad of algorithms are now available.
+Progress has been considerable, and a broad number of algorithms are now available.
 
 \marl{} is a conjunction of Game theory and \rl{}, 
  and there are several (even orthogonal) viewpoints on which researchers have been focused.
@@ -186,20 +186,20 @@ The pro of these approaches is that they can scale up with the number of agents,
 %Furthermore, they are heuristic and do not exist any convergence proof (even if, in practice, they often reach a good policy).
 
 Other efforts have focused on achieving game-theoretic properties, such as Nash-equilibrium of Pareto optimality.
-The problem is that it is used with few agents and scale hardly with the application complexity.
+The problem is that it is used with few agents and hardly scale with the application complexity.
 %
 Finally, current emerging trends tend to leverage a so-called centralised training and decentralised execution (CTDE)~\cite{DBLP:journals/tcyb/NguyenNN20} approach, by which 
- agents should leverage the system-wide knowledge at training time and then at runtime they act independently~\cite{DBLP:journals/aamas/Hernandez-LealK19}. In this setting, Deep Learning is typically employed, reaching and exceeding the state-of-the-art traditional \marl{} algorithms.
+ agents should exploit the system-wide knowledge at training time and then at runtime they act independently~\cite{DBLP:journals/aamas/Hernandez-LealK19}. In this setting, Deep Learning is typically employed, reaching and exceeding the state-of-the-art traditional \marl{} algorithms.
  
 The main problem with most of the solutions available in the literature is that they consider a small number of agents (or at least test them on small games) --- even if some novel trends exist, like Mean Field Reinforcement Learning~\cite{DBLP:journals/corr/abs-2108-02731}.
-Furthermore, in \cpsw{} we are mainly interested in learning algorithms that tackle homogenous behaviour, i.e. the policy founded could be shared with the entire collective. This will ease training phases of numerous agents, reducing the non-stationary and state-action space
+Furthermore, in \cpsw{} we are mainly interested in learning algorithms that tackle homogenous behaviour, i.e. the policy founded could be shared with the entire collective. This will ease the training phases of numerous agents, reducing the non-stationary and state-action space.
 
 This section cannot be exhaustive, \marl{} is a newly emerging research direction and multiple different viewpoints exist. The articles \cite{DBLP:journals/aamas/Hernandez-LealK19, DBLP:journals/corr/abs-1911-10635, DBLP:journals/corr/abs-1908-03963} give a comprehensive overview of current state-of-the-art solutions and ideas.
 \subsection{Aggregate Computing}
 
-\ac{} is an approach to specify \emph{self-organising} behaviours from a global perspective.
+\ac{} is an approach designed to specify \emph{self-organising} behaviours from a global perspective.
 %
-The aggregate program (i.e. a program written with \ac{}) provides a way to map the local observations of an individual agent (i.e., sensing information, current agent state, and inbound messages from neighbours) to (eventually) globally-coherent local actions
+The aggregate program (i.e. a program written with \ac{}) provides a way to map the local observations of an individual agent (i.e. sensing information, current agent state, and inbound messages from neighbours) to (eventually) globally-coherent local actions
  (i.e., actuation instructions and outbound messages).
 %
 
@@ -209,24 +209,24 @@ Recently, aggregate programming has been formally backed by \emph{field calculi}
  to global behaviour specification
  based on functions from fields to fields.
 %
-A \emph{(computational) field} is a map associating a value to any device of a given domain.
+A \emph{(computational) field} is a map associating a value to any devices of a given domain.
 %
 So, for instance, controlling the movement of a swarm of drones can be expressed through a field of velocity vectors, which maps any drone of the swarm to a corresponding velocity (speed and direction); the set of low-energy devices can be denoted through a Boolean field holding \texttt{true} for devices whose local energy level (as perceived by local sensors, and collectively also denoted as a floating-point field) is under a certain threshold (also a floating-point field).
 %
 These fields, then, are generally manipulated through three kinds of constructs:
 \begin{enumerate}
-\item \emph{stateful evolution}: \lstinline|rep(init)(f)|---expressing how a field, starting as \lstinline|init|, should evolve round-by-round through unary function \lstinline|f|.
-\item \emph{neighbour interaction}: \lstinline|nbr(e)|---used to exchange with neighbours the value obtained by evaluating field expression \lstinline|e|; this locally yields a \emph{neighbouring field}, i.e., a field that maps any neighbour to the corresponding evaluation of \lstinline|e|.
-\item \emph{domain partitioning}: \lstinline|branch(c){ifTrue}{ifFalse}|---used to partition the domain of devices into two parts: the devices for which field \lstinline|c| is locally \lstinline|true|, which evaluate expression \lstinline|ifTrue|, and those for which \lstinline|c| yields \lstinline|false|, which evaluate \lstinline|ifFalse|. 
+\item \emph{stateful evolution}: \lstinline|rep(init)(f)| --- expressing how a field, starting as \lstinline|init|, should evolve round-by-round through unary function \lstinline|f|.
+\item \emph{neighbour interaction}: \lstinline|nbr(e)| --- used to exchange with neighbours the value obtained by evaluating field expression \lstinline|e|; this locally yields a \emph{neighbouring field}, i.e., a field that maps any neighbour to the corresponding evaluation of \lstinline|e|.
+\item \emph{domain partitioning}: \lstinline|branch(c){ifTrue}{ifFalse}| --- used to partition the domain of devices into two parts: the devices for which field \lstinline|c| is locally \lstinline|true|, which evaluate expression \lstinline|ifTrue|, and those for which \lstinline|c| yields \lstinline|false|, which evaluate \lstinline|ifFalse|. 
 \end{enumerate}
 
-The idea of aggregate programming is to write programs talking about global behaviour (fields) and let these drive the local activity of every device in the system.
+The idea of aggregate computing is to write programs dealing with global behaviour (fields) and let these drive the local activity of every device in the system.
 %
 An aggregate program needs to continuously compute and communicate with neighbours to yield a collective adaptive behaviour.
 %
 An individual atomic step involving context acquisition, computation of the program, and neighbourhood-based communication is called \emph{round}.
 %
-In detail, a \emph{round} that runs at some device consists of:
+In detail, a \emph{round} that runs on a device consists of:
 \begin{enumerate}
   \item \emph{context acquisition}: the device collects information from the sensors, the messages from neighbours (including the device itself---to model state);
   \item \emph{program evaluation}: the aggregate program is evaluated against the acquired context, yielding an export, namely the message to be sent to neighbours;
@@ -236,7 +236,7 @@ In detail, a \emph{round} that runs at some device consists of:
 
 Rounds execution is completely asynchronous, so there is no global clock or barrier to coordinate the aggregate. This makes it possible to scale easily with the number of nodes. 
 %
-The combination of the logic of the aggregate program and such a collective, proactive, and periodical execution can promote the pursuit of collective adaptive behaviour
+The combination of the logic of the aggregate program and such a collective, proactive, and periodical execution can promote the pursuit of collective adaptive behaviour.
 
 \ac{} is embodied by concrete aggregate programming languages~\cite{viroli2019jlamp-si-coord},
  such as \scafi{}~\cite{DBLP:conf/isola/CasadeiVAD20,DBLP:journals/eaai/CasadeiVAPD21},
@@ -244,14 +244,14 @@ The combination of the logic of the aggregate program and such a collective, pro
  as well as a toolchain for aggregate system development and simulation~\cite{Casadei2016mass}.
 %
 
-As target toolkit, we will adopt \scafi{} in this my thesis work mostly for practical reasons: concerning other aggregate programming languages such as Proto and Protelis, surveyed in \cite{viroli2019jlamp-si-coord},
+As target toolkit, we will adopt \scafi{} in my thesis work mostly for practical reasons: concerning other aggregate programming languages such as Proto and Protelis, surveyed in \cite{viroli2019jlamp-si-coord},
 \scafi{} is a \emph{strongly typed}, \emph{internal} DSL; therefore, it enables straightforward reuse of powerful features from the Scala host language (including its type system, type inference, programming abstractions, libraries).
 
 Additionally, ScaFi also represents an agile framework for testing experimental language features (cf. \emph{aggregate processes}~\cite{DBLP:journals/eaai/CasadeiVAPD21}.
 %
 Hence, among the existing languages for aggregate programming, we believe \scafi{} is the one better fitting rich scenarios like what we expected for \cpsw{}.
 %
-Finally, we typically leverage simulations to verify collective behaviours specifications since it is costly to set up a large scale bench test. In this context, Alchemist~\cite{} is the standard de-facto to simulate aggregate programs, and this will be our reference for verifying our results~\cite{Pianini_2013}.
+Finally, we typically leverage simulations to verify collective behaviours specifications since it is costly to set up a large scale bench test. In this context, Alchemist~\cite{Pianini_2013} is the standard de-facto used to simulate aggregate programs, and this will be our reference for verifying our results.
 
 A full account of research about aggregate programming, field calculi, and \scafi{} is beyond the scope of this proposal; more details can be found in~\cite{viroli2019jlamp-si-coord,DBLP:journals/eaai/CasadeiVAPD21}.
 
