@@ -184,7 +184,7 @@ The pro of these approaches is that they can scale up with the number of agents,
 % 
 %Furthermore, they are heuristic and do not exist any convergence proof (even if, in practice, they often reach a good policy).
 
-Other efforts have focused on achieving game-theoretic properties, such as Nash-equilibrium of Pareto optimality.
+Other efforts have focused on achieving game-theoretic properties, such as Nash equilibrium of Pareto optimality.
 The problem is that it is used with few agents and hardly scale with the application complexity.
 %
 Finally, current emerging trends tend to leverage a so-called centralised training and decentralised execution (CTDE)~\cite{DBLP:journals/tcyb/NguyenNN20} approach, by which 
@@ -314,7 +314,7 @@ Indeed, in the context of field-based coordination, automated runtime verificati
 The \scafiweb{}'s frontend has been designed to be adaptable to different backends; indeed, the UI is completely separated from the underlying aggregate execution system. 
 
 \paragraph{ScaFi Loci -- Towards a type-safe deployment of Pulverised Architecture}
-\ac{} defines a conceptual model by which it is possible to define collective computation. Practically, each node needs to have a notion of neighbourhood (i.e which nodes are near to me). \textit{How} this neighbourhood had been built, is transparent for the computational model. Therefore it is possible to deploy the same application in different IT networks.
+\ac{} defines a conceptual model by which it is possible to define collective computation. Practically, each node needs to have a notion of the neighbourhood (i.e which nodes are near to me). \textit{How} this neighbourhood had been built, is transparent for the computational model. Therefore it is possible to deploy the same application in different IT networks.
 
 Pulverised architectures (i.e. pulverisation~\cite{DBLP:journals/fi/CasadeiPPVW20}) go in this direction, identifying the main \textit{deployable} units that can be moved in different concrete nodes, the core idea is that the functional behaviour of a distributed application is fundamentally orthogonal to the actual deployment of the services that compose it.
 
@@ -328,7 +328,7 @@ in a single compilation unit with a single language.
 This work could be seen as a piece of the flexible middleware that we intend to build, only focused on the deployment aspects.
 
 \section{Future works}\label{future}
-This section concludes the thesis proposal defining the next step of my PhD. In particular, we want to concretise the Reinforcement Learning and \acfull{} integration (\Cref{rl-future}). Furthermore, we want to define a reusable API applied in \cpsw{}(\Cref{swarm-api}), and the first proof of concept of a flexible middleware by combing the first works done in my PhD (\Cref{middleware}). 
+This section concludes the thesis proposal defining the next step of my PhD. In particular, we want to concretise the Reinforcement Learning and \acfull{} integration (\Cref{rl-future}). Furthermore, we want to define a reusable API applied in \cpsw{} (\Cref{swarm-api}), and the first proof of concept of a flexible middleware by combing the first works done in my PhD (\Cref{middleware}). 
 \subsection{Swarm API}\label{swarm-api}
 The thesis will extend the current \ac{} stack with high-level API about swarms behaviours (Swarm API) like flocking, foraging, blinking and spreading of information. The swarm API will not only mimic some nature-inspired behaviours, but it will give a general interface to solve common collective problems. The API should be reused in other contexts, such as collective adaptive systems (CAS), swarm robotics or multi-agent systems.
 To perform this abstraction layer definition we intend to:
@@ -356,7 +356,7 @@ These problems are partially tackled in different \marl{} algorithms, but a one-
 	\item move our solutions from \emph{offline} to \emph{online} learning. 
 \end{itemize}
 In our first works, we focused on applying \rl{} with a CTDE methodology, so we imagined that we could use simulation.
-Though, another thriving area is to use \emph{online} (continual) learning, so the aggregate program regularly adjusts itself to improve a global utility. Even if some approaches exist~\cite{DBLP:conf/icml/OmidshafieiPAHV17}, currently it is very challenging to apply learning on such a large scale online. Therefore probably it will be probably out-of-the-scope for this thesis, but it will be a future work for continuing the integration \ac{} and \rl{} integration. 
+Though, another thriving area is to use \emph{online} (continual) learning, so the aggregate program regularly adjusts itself to improve a global utility. Even if some approaches exist~\cite{DBLP:conf/icml/OmidshafieiPAHV17}, currently it is very challenging to apply learning on such a large scale online. Therefore probably it will be probably out-of-the-scope for this thesis, but it will be future work for continuing the integration \ac{} and \rl{} integration. 
 \subsection{\emph{Intellingent} and \emph{Flexible} Middleware}\label{middleware}
 \ac{} gives a theoretical framework by which it is possible to express composable collective behaviours. It abstracts over various aspects such as round frequency, neighbourhood discovery, and message delivery.
 %%
