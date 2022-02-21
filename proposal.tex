@@ -264,11 +264,11 @@ The benefit of these approaches is that they can scale up with the number of age
 Other efforts have focused on achieving game-theoretic properties in multi-agent settings, such as Nash equilibrium of Pareto optimality.
 %
 The problem is that these solutions consider typically only a few agents and hardly scale with the application complexity.
-
-%Emerging trends in \ac{marl} literature, tend to leverage a so-called centralised training and decentralised execution (CTDE)~\cite{DBLP:journals/tcyb/NguyenNN20} approach, by which 
-% agents exploit the system-wide knowledge at training time and then at runtime they act independently~\cite{DBLP:journals/aamas/Hernandez-LealK19}. 
 %
-%In this setting, Deep Learning is typically employed, reaching and exceeding the state-of-the-art traditional \ac{marl} algorithms.
+Emerging trends in \ac{marl} literature (both RL-based and game theoretic based) tend to leverage a so-called centralised training and decentralised execution (CTDE)~\cite{DBLP:journals/tcyb/NguyenNN20} approach, by which 
+agents exploit the system-wide knowledge at training time but then at runtime they act independently~\cite{DBLP:journals/aamas/Hernandez-LealK19}. 
+%
+In this setting, Deep Learning is typically employed, reaching and exceeding the state-of-the-art traditional \ac{marl} algorithms.
  
 The main problem with most of the solutions available in the literature is that they consider a small number of agents (or at least the algorithms are tested using a few computational nodes) --- even if some novel trends exist, like Mean Field Reinforcement Learning~\cite{DBLP:journals/corr/abs-2108-02731}.
 %
@@ -367,7 +367,7 @@ In particular, I plan to:
 	\item develop a \textit{flexible} middleware: 
 	developing middleware for \ac{ac} must consider several aspects such as message delivery, distributed monitoring, neighbour discovery, deployment techniques, and round frequency. 
 	%
-	Not much work has been done in this direction yet, even if some excellent ideas are proposed. 
+	Not much work has been done in this direction yet, even if some excellent ideas are proposed.
 	%
 	One of the most important ones is \emph{pulverised architecture}\cite{DBLP:journals/fi/CasadeiPPVW20} that wants to make aggregate programs applicable to various deployment types.
 	%
@@ -386,7 +386,7 @@ In particular, I plan to:
 	Here, reactive programming and functional programming could be an effective way to express \textit{swarm} behaviours; %enhancing compositionality;
 	\item improve the entire \ac{ac} stack with ML: \ac{ac} stack concerns different aspects, from API to field-calculus to middleware. 
 	%%
-	\ac{ml} -- and in particular \ac{rl} -- in this context could be used as an \emph{intrinsic} mechanism to improve \emph{adaptivity}. 
+	\ac{ml} -- and in particular \ac{rl} -- in this context could be used as an \emph{intrinsic} mechanism to improve \emph{adaptivity}.
 	%
 	\ac{ml}, however, will not be used to completely synthesise a program (as done in automatic design). Instead, we want to reach a kind of \textit{hybrid} approach, where a part of the system learns through experience but another is yet declaratively defined using \ac{ac} abstractions.
 \end{itemize}
@@ -394,7 +394,7 @@ In particular, I plan to:
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=\textwidth]{img/to-do-for-thesis.pdf}
-	\caption{Devises the current status of \ac{ac} toolkit in literature. Dotted blocks mean a lack of that concept. Green blocks are the ones that can be considered stable and reusable in \acp{cpsw} engineering. Red blocks are the ones that currently exist but need to be expanded in order to support \acp{cpsw}.}
+	\caption{Current status of \ac{ac} toolkit in literature. Dotted blocks mean a lack of that concept. Green blocks are the ones that can be considered stable and reusable in \acp{cpsw} engineering. Red blocks are the ones that currently exist but need to be expanded in order to support \acp{cpsw}.}
 	\label{fig:current-state}
 \end{figure}
 \subsection{Preliminary contributions}
@@ -409,8 +409,7 @@ experiments with Reinforcement Learning -- in particular, Hysteretic Q-Learning 
 Concerning middleware aspects, my research activities aim at closing the gap between
 its abstract space and its application in concrete systems. In this direction, I made mainly contributions to \scafi{}.
 %
-We have adopted \scafi{} in my thesis work mostly for practical reasons: concerning other aggregate programming languages such as Proto and Protelis, surveyed in \cite{viroli2019jlamp-si-coord},
-%
+We have adopted \scafi{} mostly for practical reasons: concerning other aggregate programming languages such as Proto and Protelis, surveyed in \cite{viroli2019jlamp-si-coord},
 \scafi{} is a \emph{strongly typed}, \emph{internal} DSL; therefore, it enables straightforward reuse of powerful features from the Scala host language (including its type system, type inference, programming abstractions, libraries).
 %
 Additionally, \scafi{} also represents an agile framework for testing experimental language features (cf. \emph{aggregate processes}~\cite{DBLP:journals/eaai/CasadeiVAPD21}.
@@ -464,7 +463,7 @@ To perform this abstraction layer definition we intend to:
 
 Currently, the problem with those building blocks is that they do not work well in any network topology. Indeed, when we are dealing with high node dynamic, the overall computation field becomes quite noised and unstable -- leading to not reaching our intended result.
 
-Traditionally, these problems are tackled with heuristics/algorithmically to solve various problems (stability of results, convergence speed up, \dots{}). However, this leads to complex parameters fine-tuning for each new environment.
+Traditionally, these problems are tackled with heuristics/algorithms that solve a particular issue (stability of results, convergence speed up, \dots{}). However, this leads to complex parameters fine-tuning in each new environment.
 
 Our hypothesis, described in~\cite{research}, consists of applying \ac{ml} algorithms -- and in particular Reinforcement Learning --
 to speed up the self-stabilisation process of building blocks.
@@ -474,11 +473,11 @@ Applying \ac{rl} at this level is challenging due to non-fixed input (the neighb
 These problems are partially tackled in different \ac{marl} algorithms, but a one-fit-for-all solution currently does not exist. Therefore, in the next two years we want to:
 \begin{itemize}
 	\item publish our first results using Hysteretic Q-Learning -- this will be a baseline;
-	\item use deep learning techniques to handle large-action space;
+	\item use Deep Learning techniques to handle large-action space;
 	\item move our solutions from \emph{offline} to \emph{online} learning. 
 \end{itemize}
-In our first work, we focused on applying \ac{rl} with a CTDE methodology, so we imagined that we could use simulation.
-Although, another thriving area is to use \emph{online} (continual) learning, so the aggregate program regularly adjusts itself to improve a global utility. Even if some approaches exist~\cite{DBLP:conf/icml/OmidshafieiPAHV17}, currently it is very challenging to apply learning on such a large scale online. Therefore probably it will be probably out-of-the-scope for this thesis, but it will be future work for continuing the integration \ac{ac} and \ac{rl} integration. 
+In our early works, we focused on applying \ac{rl} with a CTDE methodology, so we imagined that we could use simulation.
+Although, another thriving area is to use \emph{online} (continual) learning, so aggregate programs regularly adjust themselves to improve a global utility. Even if some approaches exist~\cite{DBLP:conf/icml/OmidshafieiPAHV17}, currently it is very challenging to apply learning on such a large scale online. Therefore probably it will be out-of-the-scope for this thesis, but it will be future work for continuing the integration \ac{ac} and \ac{rl} integration. 
 \subsection{\emph{Intellingent} and \emph{Flexible} Middleware}\label{middleware}
 \ac{ac} gives a theoretical framework by which it is possible to express composable collective behaviours. It abstracts over various aspects such as round frequency, neighbourhood discovery, and message delivery.
 %%
