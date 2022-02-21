@@ -105,7 +105,7 @@ Prof. Matteo Ferrara}
 	#1
 	}}
 \abstract{
-	This thesis aims to define a path towards the engineering of \acfi{cpsw} - where artificial swarms are seen in a modern key, including swarm robotics, large-scale IoT scenarios, and crowd engineering (tracking and control). 
+	This thesis aims to define a path towards the engineering of \textit{\acp{cpsw}} - where artificial swarms are seen in a modern key, including swarm robotics, large-scale IoT scenarios, and crowd engineering (tracking and control). 
 	%
 	\acp{cpsw} are backed by emerging trends of autonomic, pervasive, ubiquitous computing that foster a vision of distributed systems composed of a considerable number of simple entities that collectively perform collective tasks.
 	%
@@ -341,8 +341,8 @@ My PhD thesis will focus on the engineering process of \acp{cpsw} based on \ac{a
 %
 The choice of \ac{ac} as a conceptual model for describing \acp{cpsw} behaviours is well fitted since it:
 \begin{itemize}
-	\item allows defining collective behaviours robust (against failure, environmental perturbations, \dots{}) and scale-independent: 
-	the aggregate programs are expressed through manipulation of computational fields, abstracting over nodes itself and treating the system like a computational blob that evolves in time. 
+	\item allows defining robust collective behaviours (against failure, environmental perturbations, \dots{}) and scale-independent: 
+	the aggregate programs are expressed through manipulation of computational fields, abstracting over nodes and treating the system like a computational blob that evolves in time. 
 	%
 	In doing that, the logic is independent of the node population, so it natively handles failure and openness, and the same program can be applied to very dense IT networks;
 	\item enhances the possibility to \textit{program} self-organisation: typically, self-organisation is something that was achieved by observing natural phenomena. 
@@ -350,7 +350,7 @@ The choice of \ac{ac} as a conceptual model for describing \acp{cpsw} behaviours
 	\ac{ac} provides a systematic way to let \textit{self-organising} behaviour become programmable.
 	% 
 	To do that, the programs are defined using a composition of building blocks that expose self-organising patterns;
-	\item is applicable to different deployment kinds leveraging modern complex IT infrastructures: an aggregate program does not depend on any particular IT network framework. 
+	\item is applicable to different deployment kinds leveraging modern complex IT infrastructures: aggregate programs do not depend on any particular IT network. 
 	%
 	Potentially, it could be applied in cloud-like systems, P2P networks, and client-server architecture. 
 	%
@@ -360,11 +360,11 @@ The \ac{ac} usage strongly conditions the design process of collective applicati
 %
 Currently, however, there is still a gap between the application of \ac{ac} and its use in CPSw. 
 %
-Great strides have been made in research from a foundational point of view, but an all-encompassing approach to the design and implementation of collective programs is still lacking, and this is the point where my thesis will focus on (\Cref{fig:current-state}).
+Indeed, great strides have been made in research from a foundational point of view, but an all-encompassing approach to the design and implementation of collective programs is still lacking, and this is the point where my thesis will focus on (\Cref{fig:current-state}).
 %
-In particular, my work will be focused at:
+In particular, my work plans to:
 \begin{itemize}
-	\item developing a \textit{flexible} middleware: 
+	\item develop a \textit{flexible} middleware: 
 	developing middleware for \ac{ac} must consider several aspects such as message delivery, distributed monitoring, neighbour discovery, deployment techniques, and round frequency. 
 	%
 	Not much work has been done in this direction yet, even if some excellent ideas are proposed. 
@@ -372,19 +372,19 @@ In particular, my work will be focused at:
 	One of the most important ones is \emph{pulverised architecture}\cite{DBLP:journals/fi/CasadeiPPVW20} that wants to make aggregate programs applicable to various deployment types.
 	%
 	Hence, we would expand that \emph{pulverisation} to leverage current IT infrastructures opportunistically (like edge computing~\cite{DBLP:journals/computer/Satyanarayanan17} or osmotic computing~\cite{DBLP:journals/cloudcomp/VillariFDRR16}), producing software artefacts that \textit{support} such kind of middleware for \acp{cpsw};
-	\item creating building blocks for \acp{cpsw}: During the study and the analysis of \acp{cpsw}, we may devise new building blocks. 
+	\item create building blocks for \acp{cpsw}: During the study and the analysis of \acp{cpsw}, we may devise new building blocks. 
 	%
 	Indeed, by observing swarm robotics and other related collective-like systems, we could find some abstractions that currently are not encoded by \ac{ac} (e.g. a block to perform clustering).
 	% 
 	Therefore, we probably need to widen the current building block set to new constructs that could be useful also to other scenarios (like smart cities, smart grid, \dots{});
-	\item developing an API for swarm-like behaviour: \ac{ac} is based on a layered approach. 
+	\item develop an API for swarm-like behaviour: \ac{ac} is based on a layered approach. 
 	%
 	Typically, for each different scenario, developers should define an API to support a particular kind of application. 
 	%
 	So, in this thesis, we will focus on the definition of common abstractions needed to program \acp{cpsw}. 
 	%
 	Here, reactive programming and functional programming could be an effective way to express \textit{swarm} behaviours; %enhancing compositionality;
-	\item improving the entire \ac{ac} stack with ML: \ac{ac} stack concerns different aspects, from API to field-calculus to middleware. 
+	\item improve the entire \ac{ac} stack with ML: \ac{ac} stack concerns different aspects, from API to field-calculus to middleware. 
 	%%
 	\ac{ml} -- and in particular \ac{rl} -- in this context could be used as an \emph{intrinsic} mechanism to improve \emph{adaptivity}. 
 	%
