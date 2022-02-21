@@ -7,6 +7,7 @@
 \usepackage{boxedminipage}
 \usepackage{rotating}
 \usepackage{csquotes}
+\usepackage[font={small}]{caption}
 \usepackage{acronym}
 %\usepackage{natbib}
 \usepackage[colorlinks, filecolor=dark_blue, urlcolor=dark_blue, linkcolor=black, citecolor=black]{hyperref}
@@ -290,7 +291,7 @@ Historically, \ac{ac} originated from works drawing inspiration from nature: whe
 %
 Recently, \ac{ac} has been formally backed by \emph{field calculi}~\cite{viroli2019jlamp-si-coord}, which provides a compositional approach to global behaviour specification based on functions from fields to fields.
 %
-A \emph{(computational) field} is a map associating a value to any devices of a given domain.
+A \emph{(computational) field} is a map that associates a value to any devices of a given domain.
 %
 So, for instance, controlling the movement of a swarm of drones can be expressed through a field of velocity vectors, which maps any drone of the swarm to a corresponding velocity (speed and direction); 
 %
@@ -317,7 +318,9 @@ In detail, a \emph{round} that runs on a device consists of:
   \item \emph{actuations}: the export also includes information that can be used to drive actuators in the local node.
 \end{enumerate}
 %
-Rounds execution is completely asynchronous, so there is no global clock or barrier to coordinate the aggregate. This makes it possible to scale easily with the number of nodes. 
+Rounds execution is completely asynchronous, so there is no global clock or barrier to coordinate the aggregate. 
+%
+This makes it possible to scale easily with the number of nodes. 
 %
 The combination of the logic of the aggregate program and such a collective, proactive, and periodical execution can promote the pursuit of collective adaptive behaviour.
 
@@ -334,13 +337,7 @@ A full account of research about \ac{ac}, field calculi, and \scafi{} is beyond 
 
 \section{Contribution} \label{contribution}
 \subsection{Thesis proposal}
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{img/to-do-for-thesis.pdf}
-	\caption{Devises the current status of \ac{ac} toolkit in literature. Dotted blocks mean a lack of that concept. Green blocks are the ones that can be considered stable and reusable in \acp{cpsw} engineering. Red blocks are the ones that currently exist but need to be expanded in order to support \acp{cpsw}.}
-	\label{fig:current-state}
-\end{figure}
-My PhD thesis will be focused on the engineering process of \acp{cpsw} based upon \ac{ac} abstractions. 
+My PhD thesis will focus on the engineering process of \acp{cpsw} based on \ac{ac} abstractions. 
 %
 The choice of \ac{ac} as a conceptual model for describing \acp{cpsw} behaviours is well fitted since it:
 \begin{itemize}
@@ -394,6 +391,12 @@ In particular, my works will be focused at:
 	\ac{ml}, however, will not be used to completely synthesise a program (as done in automatic design). Instead, we want to reach a kind of \textit{hybrid} approach, where a part of the system learns through experience but another is yet declaratively defined using \ac{ac} abstractions.
 \end{itemize}
 
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\textwidth]{img/to-do-for-thesis.pdf}
+	\caption{Devises the current status of \ac{ac} toolkit in literature. Dotted blocks mean a lack of that concept. Green blocks are the ones that can be considered stable and reusable in \acp{cpsw} engineering. Red blocks are the ones that currently exist but need to be expanded in order to support \acp{cpsw}.}
+	\label{fig:current-state}
+\end{figure}
 \subsection{Preliminary contributions}
 In my first year of PhD, my activities have been centred on
 the integration of \ac{ac} with ML capability to create even more
