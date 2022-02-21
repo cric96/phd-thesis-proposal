@@ -143,8 +143,8 @@ Speaking about \textit{natural} complex systems, social animals, like a swarm of
 Consequently, we want to promote cyber-physical systems with the properties observed in swarms, thus we came to define \acfi{cpsw}: a collection of (simple) computational entities linked with the physical world via perception and actuation that reach collective goals through self-organising behaviours.
 %
 Swarm robotics, ``swarms” of people (crowds) or, in general, ``swarms” of IoT devices are clearly defined instances of \acp{cpsw}.
-
-Traditional design (device-level) methodologies are inadequate for \acp{cpsw} engineering, due to local-to-global mapping problems, distributed control, complex IT infrastructures, and scalability concerns.
+%
+Traditional design methodologies (device-level) are inadequate for \acp{cpsw} engineering, due to local-to-global mapping problems, distributed control, complex IT infrastructures, and scalability concerns.
 %
 To overcome these issues, the goal of my research PhD thesis is to find a systematic methodology (models, techniques and algorithms) to synthesise and deploy self-organising behaviours with predictable outcomes for \acp{cpsw}.
 
@@ -172,7 +172,7 @@ The proposal is then structured as follows. In \Cref{background} I discuss the c
 %
 In \Cref{contribution} I devise my thesis contribution in the path of engineering predictable outcome in \acp{cpsw}. 
 %
-In this section, I also show the preliminary work done in this first PhD year.
+In this section, I also show the preliminary works done in this first PhD year.
 %
 Finally, in \Cref{future} I describe what are the activities that I plan to do in the rest of my PhD project.
 
@@ -188,11 +188,11 @@ Consequently, the collective behaviour should be \textit{scale-independent} (i.e
 Besides, nodes are associated with a \textit{physical} asset through sensors and could change the environment using actuators. 
 %
 Namely, they have an \emph{embodiment} in the world -- so the name of cyber-physical. 
-
+%
 The nodes could be heterogeneous, but we imagine a \emph{homogenous} local behaviour (i.e., each node should execute the same local logic). 
 %
 Furthermore, nodes act collaboratively, and they are not selfish -- they always operate for the global collective good.
-
+%
 We suppose that the overall system could not use a central entity -- so we need to deal with a distributed control. 
 %
 Even if modern architectures could be used (e.g cloud/edge infrastructures), in general, we need to react to local problems quickly. 
@@ -200,7 +200,7 @@ Even if modern architectures could be used (e.g cloud/edge infrastructures), in 
 Hence, moving this decision far from the physical assets could be dangerous (since they are a kind of \emph{critical systems}).
 %
 As a concluding note, we want to consider their behaviour at the \textit{macro-level}, not at the \text{micro-level}. 
-
+%
 Hence, we intend to describe the collective not by emergence, but by defining a global wanted structure.
 
 \acp{cpsw} are kind of Complex Adaptive systems~\cite{holland1992complex}, but our vision enforces properties that are not necessarily present in standard complex systems' definition, like the large agents' number and the collaborative agents' nature.
@@ -275,7 +275,7 @@ The main problem with most of the solutions available in the literature is that 
 Furthermore, in \acp{cpsw} we are mainly interested in learning algorithms that tackle homogenous and cooperative behaviour, i.e., the policy founded could be shared with the entire collective. 
 %
 This will ease the training phase with a huge agents population, reducing the non-stationary and state-action space.
-
+%
 This section cannot be exhaustive, \ac{marl} is a new vast emerging research direction. 
 %
 The articles \cite{DBLP:journals/aamas/Hernandez-LealK19, DBLP:journals/corr/abs-1911-10635, DBLP:journals/corr/abs-1908-03963} give a comprehensive overview of current state-of-the-art solutions and ideas.
@@ -303,7 +303,7 @@ These fields, then, are generally manipulated through three kinds of constructs:
 \item \emph{neighbour interaction}: \lstinline|nbr(e)| --- used to exchange with neighbours the value obtained by evaluating field expression \lstinline|e|; this locally yields a \emph{neighbouring field}, i.e., a field that maps any neighbour to the corresponding evaluation of \lstinline|e|.
 \item \emph{domain partitioning}: \lstinline|branch(c){ifTrue}{ifFalse}| --- used to partition the domain of devices into two parts: the devices for which field \lstinline|c| is locally \lstinline|true|, which evaluate expression \lstinline|ifTrue|, and those for which \lstinline|c| yields \lstinline|false|, which evaluate \lstinline|ifFalse|. 
 \end{enumerate}
-
+%
 The idea of \ac{ac} is to write programs dealing with global behaviour (fields) and let these drive the local activity of every device in the system.
 %
 An aggregate program needs to continuously compute and communicate with neighbours to yield a collective adaptive behaviour.
@@ -401,8 +401,8 @@ In particular, I plan to:
 In my first year of PhD, my activities have been centred on
 the integration of \ac{ac} with ML capability to create even more
 intelligent collective behaviour. 
-
-My work climaxes with ~\cite{research} where I explain different suitable approaches to
+%
+My works climaxes with ~\cite{research} where I explain different suitable approaches to
 enhance \ac{ac} with ML. Finally, in the last period, I made concrete
 experiments with Reinforcement Learning -- in particular, Hysteretic Q-Learning \cite{hysteretic-q} -- improving the current \ac{ac} solutions.
 
@@ -459,16 +459,16 @@ To perform this abstraction layer definition we intend to:
 	\item encode them in \ac{ac} framework and evaluate the performance through simulations.
 \end{itemize}
 \subsection{Reinforcement Learning applied to Building Blocks}\label{rl-future}
-\ac{ac} bases its logic in \textit{compositionality} inspired by functional programming. The idea is that complex behaviours can be defined only through the composition of \emph{building blocks}. Furthermore, based on these programming bricks, relevant collective properties are proven, such as self-stabilisation~\cite{DBLP:journals/corr/abs-1711-08297} and eventual consistency~\cite{DBLP:conf/saso/BealVPD16}. 
-
-Currently, the problem with those building blocks is that they do not work well in any network topology. Indeed, when we are dealing with high node dynamic, the overall computation field becomes quite noised and unstable -- leading to not reaching our intended result.
-
-Traditionally, these problems are tackled with heuristics/algorithms that solve a particular issue (stability of results, convergence speed up, \dots{}). However, this leads to complex parameters fine-tuning in each new environment.
-
+\ac{ac} bases its logic in \textit{compositionality} inspired by functional programming. The idea is that complex behaviours can be defined through the composition of \emph{building blocks}. Furthermore, based on these programming bricks, relevant collective properties are proven, such as self-stabilisation~\cite{DBLP:journals/corr/abs-1711-08297} and eventual consistency~\cite{DBLP:conf/saso/BealVPD16}. 
+%
+Currently, the problem with those building blocks is that they do not work well in any network topology. Indeed, when we are dealing with high node dynamics, the overall computation field becomes quite noised and unstable -- leading to not reaching our intended result.
+%
+Traditionally, these problems are tackled with heuristics/algorithms that target a particular issue (stability of results, convergence speed up, \dots{}). However, this leads to complex parameters fine-tuning in each new environment.
+%
 Our hypothesis, described in~\cite{research}, consists of applying \ac{ml} algorithms -- and in particular Reinforcement Learning --
 to speed up the self-stabilisation process of building blocks.
 
-Applying \ac{rl} at this level is challenging due to non-fixed input (the neighbourhood is variable), multi-agent, credit assignment problem (understanding the impact of one action giving a global utility), partial observability, very large state-action space, and distributed control.
+Applying \ac{rl} at this level is challenging due to non-fixed input (the neighbourhood is variable), multi-agent credit assignment problem (understanding the impact of one action giving a global utility), partial observability, very large state-action space, and distributed control.
 
 These problems are partially tackled in different \ac{marl} algorithms, but a one-fit-for-all solution currently does not exist. Therefore, in the next two years we want to:
 \begin{itemize}
@@ -477,13 +477,13 @@ These problems are partially tackled in different \ac{marl} algorithms, but a on
 	\item move our solutions from \emph{offline} to \emph{online} learning. 
 \end{itemize}
 In our early works, we focused on applying \ac{rl} with a CTDE methodology, so we imagined that we could use simulation.
-Although, another thriving area is to use \emph{online} (continual) learning, so aggregate programs regularly adjust themselves to improve a global utility. Even if some approaches exist~\cite{DBLP:conf/icml/OmidshafieiPAHV17}, currently it is very challenging to apply learning on such a large scale online. Therefore probably it will be out-of-the-scope for this thesis, but it will be future work for continuing the integration \ac{ac} and \ac{rl} integration. 
+Although, another thriving area is to use \emph{online} (continual) learning, so aggregate programs regularly adjust themselves to improve a global utility. Even if some approaches exist~\cite{DBLP:conf/icml/OmidshafieiPAHV17}, currently it is very challenging to apply online learning on such a large scale. Therefore probably it will be out-of-the-scope for this thesis, but it will be future work for continuing the integration \ac{ac} and \ac{rl} integration. 
 \subsection{\emph{Intellingent} and \emph{Flexible} Middleware}\label{middleware}
 \ac{ac} gives a theoretical framework by which it is possible to express composable collective behaviours. It abstracts over various aspects such as round frequency, neighbourhood discovery, and message delivery.
 %%
 One of the goals of this thesis is to concretise a software artefact -- middleware -- able to \emph{flexibly} and \emph{smartly} manage the aforementioned aspects.
 %
-The core idea is to leave unspoilt the high-level program specification (expressed which functional programming) and endow the burden to the middleware of accomplishing some QoS by fine-tuning the architectural aspects. 
+The core idea is to leave unspoilt the high-level program specification (expressed which aggregate programming) and endow the burden to the middleware of accomplishing some QoS by fine-tuning the architectural aspects. 
 %
 In this way, we promote a design process in which:
 \begin{itemize}
@@ -493,13 +493,13 @@ In this way, we promote a design process in which:
 
 In the \ac{ac} literature, several works follow this idea. 
 %
-For instance, \emph{distributed schedulers}~\cite{DBLP:journals/corr/abs-2012-13806} aim at efficiently managing device scheduling using the same abstraction as \ac{ac}.
+For instance, the \emph{distributed schedulers}~\cite{DBLP:journals/corr/abs-2012-13806} aim at efficiently managing device scheduling using the same abstraction as \ac{ac}.
 Instead, the pulverisation~\cite{DBLP:journals/fi/CasadeiPPVW20} approach aims at adapting aggregate computation to any kind of deployment.
 %
 The middleware will contain these ideas, seamlessly integrated with \ac{rl} techniques as an inherent technique for achieving  QoS constraints.
-
+%
 Taking the example of the scheduler, in our vision, \ac{rl} could be used to autonomously tune the overall system frequency through a global utility optimisation, reducing the complexity in configuring the scheduling policy.
-
+%
 Definitely, \emph{learning} should be a key concept to create flexible middleware necessary to \acp{cpsw}, and hence it will be a part of my thesis work. 
 
 \bibliographystyle{ieeetr}
