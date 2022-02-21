@@ -11,13 +11,21 @@
 \usepackage{acronym}
 %\usepackage{natbib}
 \usepackage[colorlinks, filecolor=dark_blue, urlcolor=dark_blue, linkcolor=black, citecolor=black]{hyperref}
-
+\usepackage[
+	backend=biber,
+	style=numeric,
+	url=false
+]{biblatex}
 \usepackage{cleveref}
+\defbibcheck{mine}{\iffieldundef{annotation}{\skipentry}{}}
+\defbibcheck{other}{\iffieldundef{annotation}{}{\skipentry}}
+
+\addbibresource{biblio.bib}
 
 \lstdefinelanguage{scala}{
   keywords={abstract,case,catch,class,def,%
     do,else,extends,false,final,finally,%
-    for,if,implicit,import,match,mixin,%
+    for,if,implicit,import,match,mixin,%s
     new,null,object,override,package,%
     private,protected,requires,return,sealed,%
     super,this,throw,trait,true,try,lazy,%
@@ -115,7 +123,7 @@ Prof. Matteo Ferrara}
 	%
 	Inspired by nature, we define the notion of \acl{cpsw} -- the extension of natural `swarm' in Computer Science.
 	%
-	Engineering this kind of system with traditional approaches is inadequate, 
+	Engineering these systems with traditional approaches is inadequate, 
 	due to the distributed control, high-rate failure, openness, and local-to-global behaviour mapping.
 	%
 	Therefore, my thesis is focused on finding a systematic and reproducible way to design \acp{cpsw}. 
@@ -428,24 +436,24 @@ It currently features:
  \item an in-browser simulated network of devices hosting the execution;
  \item visualisation, inspection, and interaction tools integrated with the simulated environment.
 \end{itemize}
-
+%
 Furthermore, it also provides a stepping stone towards a monitoring and control system for \ac{ac} deployments.
 Indeed, in the context of field-based coordination, automated runtime verification approaches have been recently investigated~\cite{DBLP:journals/jss/AudritoCDSV21}, whereby spatial or temporal logics are mapped to field calculus programs to encode the behaviour of decentralised monitoring.
-
+%
 The \scafiweb{}'s frontend has been designed to be adaptable to different backends; indeed, the UI is completely separated from the underlying aggregate execution system. 
 
 \paragraph{ScaFi Loci -- Towards a type-safe deployment of Pulverised Architecture}
 \ac{ac} defines a conceptual model by which it is possible to define collective computation. Practically, each node needs to have a notion of the neighbourhood (i.e., which nodes are near to me). \textit{How} this neighbourhood has been built, is transparent for the computational model. Therefore it is possible to deploy the same application in different IT networks.
-
+%
 Pulverised architectures (i.e., pulverisation~\cite{DBLP:journals/fi/CasadeiPPVW20}) go in this direction, identifying the main \textit{deployable} units that can be moved in different concrete nodes, the core idea is that the functional behaviour of a distributed application is fundamentally orthogonal to the actual deployment of the services that compose it.
-
+%
 However, pulverisation does not specify how a pulverised architecture should
 be described and verified so that it can be correctly operated at runtime.
 Therefore, in \scafi{} Loci~\cite{DBLP:conf/acsos/AguzziCPSV21} we define an architecture for multitiered deployment strategies in pulverised systems, along with an implementation using ScaFi and ScalaLoci.
-
+%
 The latter enables a \textit{typesafe} multitier programming approach -- by which distributed architecture is defined
 in a single compilation unit with a single language.
-
+%
 This work could be seen as a piece of flexible middleware that we intend to build, only focused on the deployment aspects.
 
 \section{Future works}\label{future}
@@ -501,8 +509,10 @@ The middleware will contain these ideas, seamlessly integrated with \ac{rl} tech
 Taking the example of the scheduler, in our vision, \ac{rl} could be used to autonomously tune the overall system frequency through a global utility optimisation, reducing the complexity in configuring the scheduling policy.
 %
 Definitely, \emph{learning} should be a key concept to create flexible middleware necessary to \acp{cpsw}, and hence it will be a part of my thesis work. 
-
-\bibliographystyle{ieeetr}
-\bibliography{biblio}
+\nocite{collectiveautonomy}
+\section{Published papers}
+\printbibliography[heading=none, check=mine]
+\section{References}
+\printbibliography[heading=none, check=other]
 
 \end{document}
