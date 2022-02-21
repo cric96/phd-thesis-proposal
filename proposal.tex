@@ -108,7 +108,7 @@ Prof. Matteo Ferrara}
 	%
 	\acp{cpsw} are backed by emerging trends of autonomic, pervasive, ubiquitous computing that foster a vision of distributed systems composed of a considerable number of simple entities that collectively perform collective tasks.
 	%
-	These systems are similar to natural social-animal groups, where plentiful individuals (like ants, sheep, \dots) realise shared population-wide goals.
+	These systems are similar to social-animal groups, where plentiful individuals (like ants, sheep, \dots) realise shared population-wide goals.
 	%
 	Furthermore, these behaviours are typically achieved through self-organisation, making the system robust to failures and highly scalable.
 	%
@@ -120,13 +120,17 @@ Prof. Matteo Ferrara}
 	Therefore, my thesis is focused on finding a systematic and reproducible way to design \acp{cpsw}. 
 	In particular, we plan to leverage \ac{ac} -- a novel top-down global-to-local programming model.
 	%
-	As a final result of my PhD, we intend to analyse the application of \ac{ac} in \acp{cpsw}. This will touch on several aspects like distributed intelligence, flexible and opportunistic middlewares, building blocks and ad-hoc API.
+	As a final result of my PhD, we intend to analyse the application of \ac{ac} in \acp{cpsw}. 
+	%
+	This will touch on several aspects like distributed intelligence, flexible and opportunistic middlewares, building blocks and ad-hoc API definition.
 }
 \acresetall
 \newpage
 %\tableofcontents
 \section{Introduction}
-The recent evolution of IT technologies fosters a vision in which computation is \textit{everywhere}. Several modern paradigms advance that vision, like ubiquitous~\cite{DBLP:journals/sigmobile/Weiser99}, pervasive~\cite{DBLP:journals/computer/SahaM03}, collective~\cite{DBLP:journals/computer/Abowd16}, and automatic computing~\cite{DBLP:journals/computer/KephartC03}.
+The recent evolution of IT technologies fosters a vision in which computation is \textit{everywhere}. 
+%
+Several modern paradigms advance that vision, like ubiquitous~\cite{DBLP:journals/sigmobile/Weiser99}, pervasive~\cite{DBLP:journals/computer/SahaM03}, collective~\cite{DBLP:journals/computer/Abowd16}, and automatic computing~\cite{DBLP:journals/computer/KephartC03}.
 %
 These paradigms take into account systems (typically \emph{cyber physical}) where a large number (hundreds - thousands - millions) of simple interacting devices collectively perform complicated tasks in a decentralised manner, acting and sensing through a shared environment. 
 %
@@ -143,12 +147,17 @@ Traditional design (device-level) methodologies are inadequate for \acp{cpsw} en
 %
 To overcome these issues, the goal of my research PhD thesis is to find a systematic methodology (models, techniques and algorithms) to synthesise and deploy self-organising behaviours with predictable outcomes for \acp{cpsw}.
 
-This is not the first effort that wants to tackle these kinds of problems. Traditionally, designers have been guided by natural phenomena observation that was then transposed into computer systems -- a so-called
-bottom-up approach. However, this methodology led to specific solutions that hardly scale up with application complexity thanks to composability.
+This is not the first effort that wants to tackle these kinds of problems. 
+%
+Traditionally, designers have been guided by natural phenomena observation that was then transposed into computer systems -- a so-called bottom-up approach. 
+%
+However, this methodology led to specific solutions that hardly scale up with application complexity.
 %
 Novel techniques -- and the one that we follow in this work -- consist of top-down global-to-local approaches where designers define the system outcome directly at the collective level.
 %
-Among the many (like Buzz~\cite{DBLP:journals/software/PinciroliB16}, TOTA~\cite{DBLP:conf/icdcsw/MameiZL03}) in this thesis, we will take into consideration \acfi{ac}~\cite{DBLP:journals/computer/BealPV15} since it enables the definition of self-organising collective behaviours that can be functionally composed. In this way, the \textit{aggregate} programs (i.e. programs written using \ac{ac}) can be reused in different domains and can scale with domain complexity. 
+Among the many (like Buzz~\cite{DBLP:journals/software/PinciroliB16}, TOTA~\cite{DBLP:conf/icdcsw/MameiZL03}) in this thesis, we will take into consideration \acfi{ac}~\cite{DBLP:journals/computer/BealPV15} since it enables the definition of self-organising collective behaviours that can be functionally composed. 
+%
+In this way, the \textit{aggregate} programs (i.e. programs written using \ac{ac}) can be reused in different domains and can scale with application complexity. 
 
 Even if \ac{ac} is already applied in different scenarios like crowds of people~\cite{DBLP:journals/computer/BealPV15}, smart cities~\cite{DBLP:journals/isci/CasadeiFPRSV19}, and large-scale IoT~\cite{DBLP:journals/fgcs/CasadeiFPRSV19}, it currently lacks software architectures (middleware), systematic program definition, abstraction layers (API) and foundational aspects.
 %
@@ -160,7 +169,9 @@ In this process, \ac{ml} -- and in particular \ac{rl} -- techniques will be used
 
 The proposal is then structured as follows. In \Cref{background} I discuss the current state-of-the-art methodologies and related works in the field \acp{cpsw} behaviour definition.
 %
-In \Cref{contribution} I devise my thesis contribution in the path of engineering predictable outcome in \acp{cpsw}. In this section, I also show the preliminary works done in this first PhD year.
+In \Cref{contribution} I devise my thesis contribution in the path of engineering predictable outcome in \acp{cpsw}. 
+%
+In this section, I also show the preliminary works done in this first PhD year.
 %
 Finally, in \Cref{future} I describe what are the activities that I plan to do in the rest of my PhD project.
 
@@ -169,36 +180,69 @@ The goal of this section is to clarify what we mean by \textit{Cyber-Physical Sw
 \subsection{Cyber-Physical Swarms}
 This term is used to describe many computational nodes that collaborate to solve collective problems, similarly to what we observe in natural ``swarm'' systems.
 %
-These systems have a large population of networked nodes (hundreds -- thousands), and they are typically \textit{open} (i.e. we cannot know the total node number apriori). Consequently, the collective behaviour should be \textit{scale-independent} (i.e. the same program must work in small networks as well as in very large networks).
+These systems have a large population of networked nodes (hundreds -- thousands), and they are typically \textit{open} (i.e. we cannot know the total node number apriori). 
 %
-Besides, nodes are associated with a \textit{physical} asset through sensors and could change the environment using actuators. Namely, they have an embodiment in the world -- so the name of cyber-physical. 
-
-The nodes could be heterogeneous, but we imagine a \emph{homogenous} local behaviour (i.e. each node should execute the same local logic). Furthermore, nodes act collaboratively, and are not selfish -- they always operate for the global collective utility.
-
-We suppose that the overall system could not use a central entity -- so we need to deal with distributed control. Even if modern architectures could be used (e.g cloud/edge infrastructures), in general, we need to react to local problems quickly. Hence, moving this decision far from the physical assets could be dangerous (since they are a kind of \emph{critical systems}).
+Consequently, the collective behaviour should be \textit{scale-independent} (i.e. the same program must work in small networks as well as in very large networks).
 %
-As a concluding note, we want to consider their behaviour at the \textit{macro-level}, not at the \text{micro-level}. Hence, we intend to describe the collective not by emergence, but by defining a global wanted structure.
+Besides, nodes are associated with a \textit{physical} asset through sensors and could change the environment using actuators. 
+%
+Namely, they have an \emph{embodiment} in the world -- so the name of cyber-physical. 
+
+The nodes could be heterogeneous, but we imagine a \emph{homogenous} local behaviour (i.e. each node should execute the same local logic). 
+%
+Furthermore, nodes act collaboratively, and they are not selfish -- they always operate for the global collective good.
+
+We suppose that the overall system could not use a central entity -- so we need to deal with a distributed control. 
+%
+Even if modern architectures could be used (e.g cloud/edge infrastructures), in general, we need to react to local problems quickly. 
+%
+Hence, moving this decision far from the physical assets could be dangerous (since they are a kind of \emph{critical systems}).
+%
+As a concluding note, we want to consider their behaviour at the \textit{macro-level}, not at the \text{micro-level}. 
+
+Hence, we intend to describe the collective not by emergence, but by defining a global wanted structure.
 
 \acp{cpsw} are kind of Complex Adaptive systems~\cite{holland1992complex}, but our vision enforces properties that are not necessarily present in standard complex systems' definition, like the large agents' number and the collaborative agents' nature.
 %%
 Collective Adaptive Systems~\cite{DBLP:journals/corr/abs-1108-5643} is near to our \acp{cpsw} description but in our definition agents pursue \emph{collective} (not individual) goals, and they have a homogenous behaviour.
+
 \subsection{Swarm Intellingence}
-Swarm Intelligence has a similar starting point to our approach since it tries to apply the tactics observed to social animals in swarm robotics. The behaviours are derived in a bottom-up fashion, hence designers have tried to achieve a collective behaviour through emergence observing individual animal behaviours.
+
+Swarm Intelligence has a similar starting point to our approach since it tries to apply the tactics observed to social animals in swarm robotics. 
 %
-For instance, artificial stigmergy~\cite{DBLP:journals/fgcs/DorigoBT00} derives from those studies. But, nowadays, Swarm Intelligence is more focused on algorithms. 
+The behaviours are derived in a bottom-up fashion, hence designers have tried to achieve collective behaviours through emergence observing individual animal behaviours.
+%
+For instance, artificial stigmergy~\cite{DBLP:journals/fgcs/DorigoBT00} derives from those studies.
+%
+But, nowadays, Swarm Intelligence is more focused on algorithms.
+% 
 Indeed, the collective behaviours observed in nature are leveraged to perform \textit{optimisation} strategies or to directly solve problems by searching in the solution space.
 %%
 There are several examples of Swarm Intelligence optimisation algorithms, such as Ant Colony Optimisation (ACO)~\cite{DBLP:journals/tsmc/DorigoMC96}, Particle Swarm Optimisation (PSO)~\cite{DBLP:conf/icnn/KennedyE95} and Flock of Starling Optimisation (FSO)~\cite{DBLP:series/sci/FulgineiS11}.
 
-Even if they are important approaches, we are not directly interested in using them. Indeed, we draw \textit{inspiration} from swarms but only to achieve similar behaviour in the artificial swarm leveraging self-organisation. We do not want to \textit{mimic} nature but we aim to exploit the same mechanism to build robust collective systems.
+Even if they are important approaches, we are not directly interested in using them. 
+%
+Indeed, we draw \textit{inspiration} from swarms but only to achieve similar behaviour in the artificial swarm leveraging self-organisation. 
+%
+We do not want to \textit{mimic} nature but we aim to exploit the same mechanisms to build robust collective systems.
+
 \subsection{Swarm Robotics}
-Historically, Swarm Robotics derives from the first Swarm Intelligence approaches. Then, it has emerged as the \textit{engineering} part of that branch. Indeed, the general goal of \emph{swarm engineering} is \emph{to define systematic and well-founded procedures for modelling, designing, realising, verifying, validating, operating, and maintaining a swarm robotics system}~\cite{DBLP:journals/swarm/BrambillaFBD13}.
 
-In Swarm Robotics, the focus is mainly on \textit{robots} that are \emph{autonomous}, \emph{situated}, and with \emph{no central control}. We aim to expand this vision also to other ``swarm-like'' systems, such as a crowd of people, large scale IoT and smart cities where we do not have robots. 
+Historically, Swarm Robotics derives from the first Swarm Intelligence approaches. 
+%
+Then, it has emerged as the \textit{engineering} part of that branch. 
+%
+Indeed, the general goal of \emph{swarm engineering} is \emph{to define systematic and well-founded procedures for modelling, designing, realising, verifying, validating, operating, and maintaining a swarm robotics system}~\cite{DBLP:journals/swarm/BrambillaFBD13}.
 
-In particular, the novel branch of \textit{automatic design}~\cite{DBLP:journals/firai/FrancescaB16} is very appealing to be used in \acp{cpsw}. In autonomic design approaches, the controller is derived through \textit{genetic algorithms} or \textit{Multi-agent Reinforcement Learning} following a \textit{global} utility function. 
+In Swarm Robotics, the focus is mainly on \textit{robots} that are \emph{autonomous}, \emph{situated}, and with \emph{no central control}. 
+%
+We aim to expand this vision also to other ``swarm-like'' systems, such as a crowd of people, large scale IoT and smart cities where we do not have robots. 
+
+In particular, the novel branch of \textit{automatic design}~\cite{DBLP:journals/firai/FrancescaB16} is very appealing to be used in \acp{cpsw}. 
+%
+In autonomic design approaches, the controller is derived through \textit{genetic algorithms} or \textit{Multi-agent Reinforcement Learning} following a \textit{global} utility function. 
 \subsection{Multi-Agent Systems}
-A \ac{cpsw} could be seen as a multi-agent system and in particular a \emph{many}-agent system where a group of autonomous entities are programmed to achieve collective behaviours through \emph{repeated} sensing, computation, communication, and actuation.
+A \ac{cpsw} could be seen as a multi-agent system -- in particular a \emph{many}-agent system -- where a group of autonomous entities are programmed to achieve collective behaviours through \emph{repeated} sensing, computation, communication, and actuation steps.
 
 Due to the high stochasticity of the environment, it is almost impossible to know and program the optimal behaviour for all agents in advance.
 %
@@ -211,21 +255,19 @@ Progress has been considerable, and a broad number of algorithms are now availab
 
 \ac{marl} is a conjunction of Game Theory and \ac{rl}, 
  and there are several (even orthogonal) viewpoints on which researchers have been focused on.
-First attempts from \ac{rl} viewpoint, 
- goes towards a so-called \textit{independent learning}~\cite{DBLP:journals/tsmc/BusoniuBS08} approach, where each agent learn locally against the whole environment~\cite{DBLP:conf/icml/Tan93}.
-
-The benefit of these approaches is that they can scale up with the number of agents, 
- but, unfortunately, the learning process is extremely non-stationary and unstable.
-% 
-%Furthermore, they are heuristic and do not exist any convergence proof (even if, in practice, they often reach a good policy).
-
-Other efforts have focused on achieving game-theoretic properties, such as Nash equilibrium of Pareto optimality.
-The problem is that it is used with few agents and hardly scale with the application complexity.
 %
-Finally, current emerging trends tend to leverage a so-called centralised training and decentralised execution (CTDE)~\cite{DBLP:journals/tcyb/NguyenNN20} approach, by which 
- agents should exploit the system-wide knowledge at training time and then at runtime they act independently~\cite{DBLP:journals/aamas/Hernandez-LealK19}. 
+Firsts attempts from \ac{rl} viewpoint go towards a so-called \textit{independent learning}~\cite{DBLP:journals/tsmc/BusoniuBS08} approach, where each agent learns locally against the whole environment~\cite{DBLP:conf/icml/Tan93}.
 %
-In this setting, Deep Learning is typically employed, reaching and exceeding the state-of-the-art traditional \ac{marl} algorithms.
+The benefit of these approaches is that they can scale up with the number of agents, but, unfortunately, the learning process is extremely non-stationary and unstable.
+%
+Other efforts have focused on achieving game-theoretic properties in multi-agent settings, such as Nash equilibrium of Pareto optimality.
+%
+The problem is that these solutions consider typically only a few agents and hardly scale with the application complexity.
+
+%Emerging trends in \ac{marl} literature, tend to leverage a so-called centralised training and decentralised execution (CTDE)~\cite{DBLP:journals/tcyb/NguyenNN20} approach, by which 
+% agents exploit the system-wide knowledge at training time and then at runtime they act independently~\cite{DBLP:journals/aamas/Hernandez-LealK19}. 
+%
+%In this setting, Deep Learning is typically employed, reaching and exceeding the state-of-the-art traditional \ac{marl} algorithms.
  
 The main problem with most of the solutions available in the literature is that they consider a small number of agents (or at least the algorithms are tested using few computational nodes) --- even if some novel trends exist, like Mean Field Reinforcement Learning~\cite{DBLP:journals/corr/abs-2108-02731}.
 %
